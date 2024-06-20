@@ -18,7 +18,7 @@ class _TreasureHuntAppState extends State<TreasureHuntApp> {
     return const MaterialApp(
       debugShowMaterialGrid: false,
       debugShowCheckedModeBanner: false,
-      home: InverseSplashScreen(),
+      home: SplashScreen(),
     );
   }
 }
