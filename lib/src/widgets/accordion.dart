@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 class Accordion extends StatefulWidget {
   final String title;
   final Widget content;
+  final String? image;
 
   const Accordion({
     super.key,
+    this.image,
     required this.title,
     required this.content,
   });
