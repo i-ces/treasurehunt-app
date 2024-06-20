@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:treasurehunt/src/screens/splash_screen.dart';
 
 void main() {
   runApp(const TreasureHuntApp());
@@ -12,29 +13,12 @@ class TreasureHuntApp extends StatefulWidget {
 }
 
 class _TreasureHuntAppState extends State<TreasureHuntApp> {
-  String _treasureMessage = "Start your treasure hunt!";
-
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowMaterialGrid: false,
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text("Treasure Hunt"),
-        ),
-        body: Center(
-          child: Text(_treasureMessage),
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            setState(() {
-              _treasureMessage = "You found a clue!";
-            });
-          },
-          child: const Icon(Icons.search),
-        ),
-      ),
+      home: SplashScreen(),
     );
   }
 }
