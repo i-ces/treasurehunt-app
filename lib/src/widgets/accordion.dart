@@ -60,6 +60,7 @@ class _AccordionState extends State<Accordion>
           onTap: _toggleExpand,
           child: AnimatedContainer(
             width: MediaQuery.of(context).size.width * 0.8,
+            height: 142,
             duration: const Duration(milliseconds: 300),
             decoration: BoxDecoration(
               color: Colors.orangeAccent,
@@ -80,6 +81,9 @@ class _AccordionState extends State<Accordion>
               children: [
                 Row(
                   children: [
+                    Image.asset(
+                      widget.image ?? 'assets/images/random.png',
+                    ),
                     const SizedBox(width: 10),
                     Text(
                       widget.title,
