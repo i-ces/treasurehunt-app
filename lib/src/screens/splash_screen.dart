@@ -9,11 +9,12 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedSplashScreen(
-      backgroundColor: Colors.white,
-      splash: const Splash(),
-      nextScreen: const HomeScreen(),
-      splashIconSize:
-          400, // Ensure splashIconSize is also set to ensure full size.
+      backgroundColor: const Color(0xFFFBAE40),
+      splash: const Splash(
+        color: Colors.white,
+      ),
+      nextScreen: const InverseSplashScreen(),
+      splashIconSize: 400,
     );
   }
 }
@@ -24,10 +25,7 @@ class InverseSplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedSplashScreen(
-      backgroundColor: const Color(0xFFFBAE40),
-      splash: const Splash(
-        color: Colors.white,
-      ),
+      splash: const Splash(),
       nextScreen: const HomeScreen(),
       splashIconSize:
           400, // Ensure splashIconSize is also set to ensure full size.
