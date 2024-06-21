@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:treasurehunt/src/utils/colors.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const CustomAppBar({super.key});
+
   @override
   Widget build(BuildContext context) {
     return AppBar(
