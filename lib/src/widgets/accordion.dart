@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class Accordion extends StatefulWidget {
   final String title;
-  final Widget content;
+  final String content;
   final String? image;
 
   const Accordion({
@@ -81,8 +82,24 @@ class _AccordionState extends State<Accordion>
               children: [
                 Row(
                   children: [
-                    Image.asset(
-                      widget.image ?? 'assets/images/random.png',
+                    ClipRRect(
+                      // Ensures square shape and clipped corners
+                      borderRadius:
+                          BorderRadius.circular(12.0), // Adjust as needed
+                      child: widget.image != null && widget.image!.isNotEmpty
+                          ? FadeInImage.assetNetwork(
+                              width: 120,
+                              placeholder:
+                                  'assets/placeholder.png', // Placeholder image
+                              image: widget
+                                  .image!, // Use "!" for non-null assertion
+                              fit: BoxFit.cover, // Adjust as needed
+                            )
+                          : SvgPicture.asset(
+                              width: 100,
+                              'assets/logo.svg',
+                              color: Colors.white, // Adjust color if needed
+                            ),
                     ),
                     const SizedBox(width: 10),
                     Text(
@@ -123,7 +140,10 @@ class _AccordionState extends State<Accordion>
                   ),
                   padding:
                       const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                  child: widget.content,
+                  child: Text(
+                    widget.content,
+                    style: const TextStyle(fontSize: 16),
+                  ),
                 ),
               ),
             );
