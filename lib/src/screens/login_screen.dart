@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:treasurehunt/src/screens/welcome_screen.dart';
+import 'package:treasurehunt/src/widgets/custom_button.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -30,9 +32,14 @@ class _LoginPageState extends State<LoginPage> {
               children: [
                 IconButton(
                   onPressed: () {
-                    // Handle back button logic here
+                    Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const WelcomeScreen(),
+                              ),
+                            );
                   },
-                  icon: Icon(Icons.arrow_back),
+                  icon: Icon(Icons.arrow_back,),
                 ),
               ],
             ),
@@ -82,28 +89,23 @@ class _LoginPageState extends State<LoginPage> {
                   Center(
                     child: Column(
                       children: [
-                        ElevatedButton(
+                        CustomButton(
+                          text: 'LOGIN',
                           onPressed: () {
-                            // Handle login logic here
-                            print('Username: ${_usernameController.text}');
-                            print('Password: ${_passwordController.text}');
+                            // Navigate to verfied screen
+
+                            // Navigator.pushReplacement(
+                            //   context,
+                            //   MaterialPageRoute(
+                            //     builder: (context) => const HomeScreen(),
+                            //   ),
+                            // );
                           },
-                          child: Text('Login'),
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: const Color(0xFF233974), // Background color
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30.0),
-                            ),
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 40, vertical: 15),
-                          ),
                         ),
                         Text("<Remember to follow the owl"),
                       ],
-                      
                     ),
                   ),
-                  
                 ],
               ),
             ),
