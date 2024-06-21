@@ -84,21 +84,18 @@ class _AccordionState extends State<Accordion>
                   children: [
                     ClipRRect(
                       // Ensures square shape and clipped corners
-                      borderRadius:
-                          BorderRadius.circular(12.0), // Adjust as needed
+                      borderRadius: BorderRadius.circular(12.0),
                       child: widget.image != null && widget.image!.isNotEmpty
                           ? FadeInImage.assetNetwork(
                               width: 120,
-                              placeholder:
-                                  'assets/placeholder.png', // Placeholder image
-                              image: widget
-                                  .image!, // Use "!" for non-null assertion
-                              fit: BoxFit.cover, // Adjust as needed
+                              placeholder: 'assets/placeholder.png',
+                              image: widget.image!,
+                              fit: BoxFit.cover,
                             )
                           : SvgPicture.asset(
                               width: 100,
                               'assets/logo.svg',
-                              color: Colors.white, // Adjust color if needed
+                              color: Colors.white,
                             ),
                     ),
                     const SizedBox(width: 10),
