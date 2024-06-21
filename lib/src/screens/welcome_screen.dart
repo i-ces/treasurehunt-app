@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:treasurehunt/src/screens/home_screen.dart';
 import 'package:treasurehunt/src/screens/login_screen.dart';
 import 'package:treasurehunt/src/widgets/custom_button.dart';
 
