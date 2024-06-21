@@ -1,18 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:treasurehunt/src/screens/home_screen.dart';
 import 'package:treasurehunt/src/screens/splash_screen.dart';
+import 'package:treasurehunt/src/utils/colors.dart';
 
 void main() {
   runApp(const TreasureHuntApp());
 }
 
-class TreasureHuntApp extends StatefulWidget {
-  const TreasureHuntApp({super.key});
+class TreasureHuntApp extends StatelessWidget {
+  const TreasureHuntApp({Key? key}) : super(key: key);
 
-  @override
-  State<TreasureHuntApp> createState() => _TreasureHuntAppState();
-}
-
-class _TreasureHuntAppState extends State<TreasureHuntApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -21,7 +18,7 @@ class _TreasureHuntAppState extends State<TreasureHuntApp> {
       theme: ThemeData(
         primarySwatch: Colors.orange,
         iconTheme: const IconThemeData(
-          color: Colors.orange,
+          color: AppColors.AccentColor,
         ),
       ),
       home: const SplashScreen(),
