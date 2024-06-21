@@ -15,10 +15,16 @@ class TreasureHuntApp extends StatefulWidget {
 class _TreasureHuntAppState extends State<TreasureHuntApp> {
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowMaterialGrid: false,
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+      theme: ThemeData(
+        primarySwatch: Colors.orange,
+        iconTheme: const IconThemeData(
+          color: Colors.orange,
+        ),
+      ),
+      home: const SplashScreen(),
     );
   }
 }
