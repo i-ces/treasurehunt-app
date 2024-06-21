@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:treasurehunt/src/widgets/custom_app_bar.dart';
+import 'package:treasurehunt/src/widgets/accordion.dart';
 import 'package:treasurehunt/src/widgets/nav_bar.dart';
+
 
 import '../pages/home_page.dart';
 import '../pages/leaderboard_page.dart';
 import '../pages/riddles.dart';
 import '../pages/sponsor.dart';
+import '../widgets/custom_app_bar.dart';
 
 
 class HomeScreen extends StatefulWidget {
