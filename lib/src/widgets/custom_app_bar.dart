@@ -9,6 +9,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       automaticallyImplyLeading: false, // Removes the back button if needed
       flexibleSpace: Container(
+        height: MediaQuery.of(context).size.height * 0.5,
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [AppColors.AppBarColor2, AppColors.AppBarColor1],
@@ -21,19 +22,19 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           ),
         ),
         child: Padding(
-          padding: const EdgeInsets.all(10.0),
+          padding: const EdgeInsets.fromLTRB(10, 35, 10, 10),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Row(
                 children: [
                   Image.asset(
-                    'images/logo-white.png', // Path to your second logo
+                    'assets/images/logo-white.png', // Path to your second logo
                     height: 30.0,
                   ),
                    const SizedBox(width: 150.0),
                   Image.asset(
-                    'images/i-ces_logo.png', // Path to your first logo
+                    'assets/images/i-ces_logo.png', // Path to your first logo
                     height: 30.0,
                   ),
                 ],
