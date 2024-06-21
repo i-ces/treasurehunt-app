@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:treasurehunt/src/screens/home_screen.dart';
 import 'package:treasurehunt/src/screens/welcome_screen.dart';
+import 'package:treasurehunt/src/utils/colors.dart';
 import 'package:treasurehunt/src/widgets/custom_button.dart';
 
 class LoginPage extends StatefulWidget {
@@ -64,7 +65,7 @@ class _LoginPageState extends State<LoginPage> {
                       },
                       icon: const Icon(
                         Icons.arrow_back,
-                        color: Colors.orange, // Set icon color to orange
+                        color: AppColors.AccentColor, // Set icon color to orange
                       ),
                     ),
                   ],
@@ -87,7 +88,7 @@ class _LoginPageState extends State<LoginPage> {
                           labelText: 'Team Name',
                           prefixIcon: Icon(
                             CupertinoIcons.person,
-                            color: Colors.orange, // Set icon color to orange
+                            color: AppColors.AccentColor, // Set icon color to orange
                           ),
                         ),
                       ),
@@ -98,14 +99,14 @@ class _LoginPageState extends State<LoginPage> {
                           labelText: 'Password',
                           prefixIcon: const Icon(
                             CupertinoIcons.lock,
-                            color: Colors.orange, // Set icon color to orange
+                            color: AppColors.AccentColor, // Set icon color to orange
                           ),
                           suffixIcon: IconButton(
                             icon: Icon(
                               _obscureText
                                   ? CupertinoIcons.eye
                                   : CupertinoIcons.eye_slash,
-                              color: Colors.orange, // Set icon color to orange
+                              color: AppColors.AccentColor, // Set icon color to orange
                             ),
                             onPressed: _togglePasswordVisibility,
                           ),

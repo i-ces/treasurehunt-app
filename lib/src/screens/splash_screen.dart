@@ -12,7 +12,7 @@ class SplashScreen extends StatelessWidget {
     return AnimatedSplashScreen(
       backgroundColor: AppColors.AccentColor,
       splash: const Splash(
-        color: Colors.white,
+        color: AppColors.FadedGrey,
       ),
       nextScreen: const InverseSplashScreen(),
       splashIconSize: 400,
