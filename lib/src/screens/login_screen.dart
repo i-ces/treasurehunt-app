@@ -15,12 +15,19 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  bool _obscureText = true;
 
   @override
   void dispose() {
     _usernameController.dispose();
     _passwordController.dispose();
     super.dispose();
+  }
+
+  void _togglePasswordVisibility() {
+    setState(() {
+      _obscureText = !_obscureText;
+    });
   }
 
   @override
@@ -31,7 +38,7 @@ class _LoginPageState extends State<LoginPage> {
           children: [
             Positioned(
               top: 230,
-              right: -25,
+              right: -20,
               child: Transform.rotate(
                 angle: -45 * 3.1415927 / 180, // Rotate -45 degrees
                 child: SvgPicture.asset(
@@ -87,20 +94,25 @@ class _LoginPageState extends State<LoginPage> {
                       const SizedBox(height: 16.0),
                       TextFormField(
                         controller: _passwordController,
-                        decoration: const InputDecoration(
+                        decoration: InputDecoration(
                           labelText: 'Password',
-                          prefixIcon: Icon(
+                          prefixIcon: const Icon(
                             CupertinoIcons.lock,
                             color: Colors.orange, // Set icon color to orange
                           ),
-                          suffixIcon: Icon(
-                            CupertinoIcons.eye,
-                            color: Colors.orange, // Set icon color to orange
+                          suffixIcon: IconButton(
+                            icon: Icon(
+                              _obscureText
+                                  ? CupertinoIcons.eye
+                                  : CupertinoIcons.eye_slash,
+                              color: Colors.orange, // Set icon color to orange
+                            ),
+                            onPressed: _togglePasswordVisibility,
                           ),
                         ),
-                        obscureText: true,
+                        obscureText: _obscureText,
                       ),
-                      const SizedBox(height: 148.0),
+                      const SizedBox(height: 168.0),
                       Column(
                         children: [
                           CustomButton(
