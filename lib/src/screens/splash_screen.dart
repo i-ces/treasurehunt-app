@@ -2,6 +2,7 @@ import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:treasurehunt/src/screens/welcome_screen.dart';
+import 'package:treasurehunt/src/utils/colors.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -9,7 +10,7 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedSplashScreen(
-      backgroundColor: const Color(0xFFFBAE40),
+      backgroundColor: AppColors.AccentColor,
       splash: const Splash(
         color: Colors.white,
       ),

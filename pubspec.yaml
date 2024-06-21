@@ -32,6 +32,7 @@ flutter:
     - assets/logo.svg
     - assets/images/fluidshape.svg
     - assets/images/logo-word.svg
+    - assets/
   #   - images/a_dot_ham.jpeg
 
   # fonts:

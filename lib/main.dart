@@ -1,22 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:treasurehunt/src/screens/home_screen.dart';
 import 'package:treasurehunt/src/screens/splash_screen.dart';
 
 void main() {
   runApp(const TreasureHuntApp());
 }
 
-class TreasureHuntApp extends StatefulWidget {
-  const TreasureHuntApp({super.key});
+class TreasureHuntApp extends StatelessWidget {
+  const TreasureHuntApp({Key? key}) : super(key: key);
 
-  @override
-  State<TreasureHuntApp> createState() => _TreasureHuntAppState();
-}
-
-class _TreasureHuntAppState extends State<TreasureHuntApp> {
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowMaterialGrid: false,
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: SplashScreen(),
     );
