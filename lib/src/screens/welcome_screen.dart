@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:treasurehunt/src/screens/home_screen.dart';
+import 'package:treasurehunt/src/screens/login_screen.dart';
 import 'package:treasurehunt/src/widgets/custom_button.dart';
 
 class WelcomeScreen extends StatelessWidget {
@@ -50,16 +51,19 @@ class WelcomeScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 30),
-            CustomButton(
-              text: 'Get Started',
-              onPressed: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const HomeScreen(),
-                  ),
-                );
-              },
+            Container(
+              margin: const EdgeInsets.all(24.0),
+              child: CustomButton(
+                text: 'Get Started',
+                onPressed: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const LoginPage(),
+                    ),
+                  );
+                },
+              ),
             ),
           ],
         ),
