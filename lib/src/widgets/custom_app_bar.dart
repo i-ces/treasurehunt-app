@@ -13,8 +13,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [AppColors.AppBarColor2, AppColors.AppBarColor1],
-            begin: Alignment(0.0,0.0),
-            end: Alignment(1.0,1.0),
+            begin: Alignment(0.0, 0.0),
+            end: Alignment(1.0, 1.0),
           ),
           borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(20.0),
@@ -32,7 +32,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                     'assets/images/logo-white.png', // Path to your second logo
                     height: 30.0,
                   ),
-                   const SizedBox(width: 150.0),
+                  const SizedBox(width: 150.0),
                   Image.asset(
                     'assets/images/i-ces_logo.png', // Path to your first logo
                     height: 30.0,
@@ -46,6 +46,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       elevation: 0, // Remove shadow if needed
     );
   }
+
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
