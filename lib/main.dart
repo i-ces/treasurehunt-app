@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:treasurehunt/src/screens/home_screen.dart';
 import 'package:treasurehunt/src/screens/splash_screen.dart';
+import 'package:treasurehunt/src/screens/verified_screen.dart';
 
 void main() {
   runApp(const TreasureHuntApp());
@@ -18,7 +20,7 @@ class _TreasureHuntAppState extends State<TreasureHuntApp> {
     return const MaterialApp(
       debugShowMaterialGrid: false,
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+      home: VerifiedScreen(),
     );
   }
 }
