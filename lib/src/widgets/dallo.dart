@@ -26,10 +26,20 @@ class Dallo extends StatelessWidget {
                   // Navigator.of(context).pop(),
                   ),
             Expanded(
-              child: Text(
-                name,
-                style: const TextStyle(fontSize: 20),
-                textAlign: showBackButton ? TextAlign.start : TextAlign.center,
+              child: Align(
+                alignment: Alignment.center,
+                child: Text(
+                  name,
+                  style: const TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w400,
+                    fontFamily: 'Poppins',
+                    color: Color(0xff090F4780)
+                    ),
+                    // background: #090F4780;
+
+                  textAlign: showBackButton ? TextAlign.start : TextAlign.center,
+                ),
               ),
             ),
           ],
