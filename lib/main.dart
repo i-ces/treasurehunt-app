@@ -21,7 +21,7 @@ class TreasureHuntApp extends StatelessWidget {
           color: AppColors.AccentColor,
         ),
       ),
-      home: const SplashScreen(),
+      home: const HomeScreen(),
     );
   }
 }
