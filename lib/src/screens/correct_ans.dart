@@ -20,6 +20,11 @@ class _CorrectAnsState extends State<CorrectAns> {
     String imagePath;
 
     switch (widget.displayContent) {
+      case 0:
+        text = "Congratulations!";
+        imagePath = 'assets/images/Tick.png';
+        subtext = "You’re one step closure to finding \n the whereabouts of Mr. Umi";
+        break;
       case 1:
         text = "Oh no!";
         imagePath = 'assets/images/cross.png'; 
@@ -30,11 +35,10 @@ class _CorrectAnsState extends State<CorrectAns> {
         imagePath = 'assets/images/trap.png'; 
         subtext = "Looks like you’ve encountered a trap! Please move a step back!";
         break;
-      case 0:
       default:
-        text = "Congratulations!";
-        imagePath = 'assets/images/Tick.png';
-        subtext = "You’re one step closure to finding \n the whereabouts of Mr. Umi";
+        text = "Danger!";
+        imagePath = 'assets/images/trap.png'; 
+        subtext = "Looks like you’ve encountered a trap! Please move a step back!";
         break;
     }
 
