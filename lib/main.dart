@@ -15,13 +15,14 @@ class TreasureHuntApp extends StatelessWidget {
     return MaterialApp(
       debugShowMaterialGrid: false,
       debugShowCheckedModeBanner: false,
+
       theme: ThemeData(
         primarySwatch: Colors.orange,
         iconTheme: const IconThemeData(
           color: AppColors.AccentColor,
         ),
       ),
-      home: const SplashScreen(),
+      home: const HomeScreen(),
     );
   }
 }

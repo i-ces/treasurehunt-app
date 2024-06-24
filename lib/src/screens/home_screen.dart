@@ -33,9 +33,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    double appBarHeight = MediaQuery.of(context).size.height *0.2;
     return Scaffold(
-      // ignore: prefer_const_constructors
-      appBar: CustomAppBar(),
+      appBar:  CustomAppBar(appBarHeight: appBarHeight,),
       body: _screens[_selectedIndex],
       bottomNavigationBar: NavBar(
         onItemSelected: _onItemTapped,
@@ -44,3 +44,4 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
+

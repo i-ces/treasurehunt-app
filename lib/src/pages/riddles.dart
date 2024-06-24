@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+
 import 'package:treasurehunt/src/screens/selecting_numbers.dart';
+
 import 'package:treasurehunt/src/utils/colors.dart';
 
 
@@ -42,3 +44,4 @@ class RiddlesPage extends StatelessWidget {
     );
   }
 }
+
