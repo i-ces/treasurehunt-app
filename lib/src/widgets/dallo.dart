@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 class Dallo extends StatelessWidget {
   final String name;
   final bool showBackButton;
+  final void Function() onBackPressed;
 
   const Dallo({
     required this.name,
     this.showBackButton = false,
+    required this.onBackPressed,
     super.key,
   });
 
@@ -22,24 +24,16 @@ class Dallo extends StatelessWidget {
         child: Row(
           children: [
             if (showBackButton)
-              IconButton(icon: const Icon(Icons.arrow_back), onPressed: () => {}
+              IconButton(icon: const Icon(Icons.arrow_back), onPressed: () => {
+                onBackPressed(),
+              }
                   // Navigator.of(context).pop(),
                   ),
             Expanded(
-              child: Align(
-                alignment: Alignment.center,
-                child: Text(
-                  name,
-                  style: const TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w400,
-                    fontFamily: 'Poppins',
-                    color: Color(0xff090F4780)
-                    ),
-                    // background: #090F4780;
-
-                  textAlign: showBackButton ? TextAlign.start : TextAlign.center,
-                ),
+              child: Text(
+                name,
+                style: const TextStyle(fontSize: 20),
+                textAlign: showBackButton ? TextAlign.start : TextAlign.center,
               ),
             ),
           ],

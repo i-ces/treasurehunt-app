@@ -8,7 +8,8 @@ void main() {
 }
 
 class TreasureHuntApp extends StatelessWidget {
-  const TreasureHuntApp({super.key});
+  const TreasureHuntApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
