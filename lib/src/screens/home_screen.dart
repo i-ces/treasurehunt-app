@@ -9,7 +9,7 @@ import 'package:treasurehunt/src/widgets/nav_bar.dart';
 
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({super.key});
 
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -28,12 +28,13 @@ class _HomeScreenState extends State<HomeScreen> {
     HomePage(),
     LeaderboardPage(),
     RiddlesPage(),
-    SponsorPage(),
+    SponsorsPage(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // ignore: prefer_const_constructors
       appBar: CustomAppBar(),
       body: _screens[_selectedIndex],
       bottomNavigationBar: NavBar(
