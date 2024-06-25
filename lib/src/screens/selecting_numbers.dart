@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:treasurehunt/src/utils/colors.dart';
 import 'package:treasurehunt/src/widgets/custom_app_bar.dart';
-import 'package:treasurehunt/src/widgets/dallo.dart';
+import 'package:treasurehunt/src/widgets/floating_bar.dart';
 import 'package:treasurehunt/src/widgets/nav_bar.dart';
 
 class RiddleDetailPage extends StatelessWidget {
   final String riddleTitle;
   final int riddleNumber;
 
-  const RiddleDetailPage({Key? key, required this.riddleTitle, required this.riddleNumber}) : super(key: key);
+  const RiddleDetailPage(
+      {Key? key, required this.riddleTitle, required this.riddleNumber})
+      : super(key: key);
 
   Future<String> fetchRiddleDescription() async {
     // Simulate API call
@@ -24,7 +26,7 @@ class RiddleDetailPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           const SizedBox(height: 16),
-          Dallo(
+          FloatingBar(
             name: 'Riddle $riddleNumber',
             showBackButton: true,
             onBackPressed: () => Navigator.of(context).pop(),
@@ -44,7 +46,8 @@ class RiddleDetailPage extends StatelessWidget {
                     padding: const EdgeInsets.all(16.0),
                     child: Text(
                       snapshot.data!,
-                      style: const TextStyle(fontSize: 18, color: AppColors.TextColor1),
+                      style: const TextStyle(
+                          fontSize: 18, color: AppColors.TextColor1),
                     ),
                   );
                 }

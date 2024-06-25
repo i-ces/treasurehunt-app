@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:treasurehunt/src/utils/colors.dart';
 import 'package:treasurehunt/src/widgets/custom_button.dart';
-import 'package:treasurehunt/src/widgets/dallo.dart';
+import 'package:treasurehunt/src/widgets/floating_bar.dart';
 
 class LevelsPage extends StatefulWidget {
   const LevelsPage({super.key});
@@ -20,7 +20,7 @@ class _LevelsPageState extends State<LevelsPage> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Dallo(
+            FloatingBar(
               name: 'Riddle #001',
               onBackPressed: () {},
             ),

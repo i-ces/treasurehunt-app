@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:treasurehunt/src/utils/colors.dart';
 import 'package:treasurehunt/src/widgets/custom_button.dart';
-import 'package:treasurehunt/src/widgets/dallo.dart';
+import 'package:treasurehunt/src/widgets/floating_bar.dart';
 
 class CorrectAns extends StatefulWidget {
   final int displayContent;
@@ -51,7 +51,7 @@ class _CorrectAnsState extends State<CorrectAns> {
       children: [
         Align(
           alignment: Alignment.topCenter,
-          child: Dallo(
+          child: FloatingBar(
             name: 'Riddle #01',
             onBackPressed: () {},
           ),
