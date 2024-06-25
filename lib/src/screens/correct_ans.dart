@@ -23,31 +23,39 @@ class _CorrectAnsState extends State<CorrectAns> {
       case 0:
         text = "Congratulations!";
         imagePath = 'assets/images/Tick.png';
-        subtext = "You’re one step closure to finding \n the whereabouts of Mr. Umi";
+        subtext =
+            "You’re one step closure to finding \n the whereabouts of Mr. Umi";
         break;
       case 1:
         text = "Oh no!";
-        imagePath = 'assets/images/cross.png'; 
-        subtext = "Looks like you made an oopsie! Please check\n the riddles carefully and answer again!";
+        imagePath = 'assets/images/cross.png';
+        subtext =
+            "Looks like you made an oopsie! Please check\n the riddles carefully and answer again!";
         break;
       case 2:
         text = "Danger!";
-        imagePath = 'assets/images/trap.png'; 
-        subtext = "Looks like you’ve encountered a trap! Please move a step back!";
+        imagePath = 'assets/images/trap.png';
+        subtext =
+            "Looks like you’ve encountered a trap! Please move a step back!";
         break;
       default:
         text = "Danger!";
-        imagePath = 'assets/images/trap.png'; 
-        subtext = "Looks like you’ve encountered a trap! Please move a step back!";
+        imagePath = 'assets/images/trap.png';
+        subtext =
+            "Looks like you’ve encountered a trap! Please move a step back!";
         break;
     }
 
     return Stack(
       alignment: Alignment.center,
       children: [
-        const Align(
+        Align(
           alignment: Alignment.topCenter,
-          child: Dallo(name: 'Riddle #01'),),      //replace this with the riddle id
+          child: Dallo(
+            name: 'Riddle #01',
+            onBackPressed: () {},
+          ),
+        ), //replace this with the riddle id
         Align(
           alignment: Alignment.centerRight,
           child: Image.asset(
@@ -60,7 +68,7 @@ class _CorrectAnsState extends State<CorrectAns> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(imagePath),
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
               Text(
                 text,
                 style: const TextStyle(
@@ -69,7 +77,7 @@ class _CorrectAnsState extends State<CorrectAns> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: 12),
+              const SizedBox(height: 12),
               Text(
                 subtext,
                 textAlign: TextAlign.center,
@@ -78,7 +86,7 @@ class _CorrectAnsState extends State<CorrectAns> {
                   color: Color.fromARGB(255, 89, 118, 167),
                 ),
               ),
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
               CustomButton(text: 'Next', onPressed: () {}),
             ],
           ),
