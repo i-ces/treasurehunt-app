@@ -3,7 +3,6 @@ import 'package:treasurehunt/src/pages/home_page.dart';
 import 'package:treasurehunt/src/pages/leaderboard_page.dart';
 import 'package:treasurehunt/src/pages/riddles.dart';
 import 'package:treasurehunt/src/pages/sponsor.dart';
-import 'package:treasurehunt/src/widgets/accordion.dart';
 import 'package:treasurehunt/src/widgets/custom_app_bar.dart';
 import 'package:treasurehunt/src/widgets/nav_bar.dart';
 
@@ -25,10 +24,10 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   final List<Widget> _screens = [
-    HomePage(),
-    LeaderboardPage(),
+    const HomePage(),
+    const LeaderboardPage(),
     RiddlesPage(),
-    SponsorsPage(),
+    const SponsorsPage(),
   ];
 
   @override

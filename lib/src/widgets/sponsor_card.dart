@@ -7,12 +7,12 @@ class SponsorCard extends StatefulWidget {
   final String sponsorDescription;
 
   const SponsorCard({
-    Key? key,
+    super.key,
     required this.sponsorType,
     required this.sponsorName,
     required this.sponsorImage,
     required this.sponsorDescription,
-  }) : super(key: key);
+  });
 
   @override
   _SponsorCardState createState() => _SponsorCardState();

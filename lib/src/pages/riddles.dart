@@ -8,6 +8,8 @@ import 'package:treasurehunt/src/utils/colors.dart';
 class RiddlesPage extends StatelessWidget {
   final List<String> riddles = List.generate(20, (index) => 'Riddle ${index + 1}');
 
+  RiddlesPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -35,7 +37,7 @@ class RiddlesPage extends StatelessWidget {
               padding: const EdgeInsets.all(16.0),
               child: Text(
                 riddles[index],
-                style: TextStyle(fontSize: 18, color: AppColors.TextColor1),
+                style: const TextStyle(fontSize: 18, color: AppColors.TextColor1),
               ),
             ),
           ),

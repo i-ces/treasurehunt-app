@@ -9,8 +9,7 @@ class RiddleDetailPage extends StatelessWidget {
   final int riddleNumber;
 
   const RiddleDetailPage(
-      {Key? key, required this.riddleTitle, required this.riddleNumber})
-      : super(key: key);
+      {super.key, required this.riddleTitle, required this.riddleNumber});
 
   Future<String> fetchRiddleDescription() async {
     // Simulate API call
@@ -58,17 +57,17 @@ class RiddleDetailPage extends StatelessWidget {
       ),
       bottomNavigationBar: StatefulBuilder(
         builder: (BuildContext context, StateSetter setState) {
-          int _selectedIndex = 2;
+          int selectedIndex = 2;
 
-          void _onItemTapped(int index) {
+          void onItemTapped(int index) {
             setState(() {
-              _selectedIndex = index;
+              selectedIndex = index;
             });
           }
 
           return NavBar(
-            onItemSelected: _onItemTapped,
-            selectedIndex: _selectedIndex,
+            onItemSelected: onItemTapped,
+            selectedIndex: selectedIndex,
           );
         },
       ),

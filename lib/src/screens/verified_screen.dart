@@ -30,7 +30,7 @@ class VerifiedScreen extends StatelessWidget {
             ),
             Container(
               width: double.infinity,
-              padding: EdgeInsets.fromLTRB(30, 0, 30, 0),
+              padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -70,7 +70,7 @@ class VerifiedScreen extends StatelessWidget {
                   CustomButton(
                     text: 'CONTINUE',
                     onPressed: (){
-                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> HomeScreen()));
+                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> const HomeScreen()));
                     }),
                 ],
               ),

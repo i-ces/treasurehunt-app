@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:treasurehunt/src/utils/sponsors_data.dart';
 import 'package:treasurehunt/src/widgets/accordion.dart';
 import 'package:treasurehunt/src/widgets/floating_bar.dart';
-import 'package:treasurehunt/src/widgets/sponsor_card.dart';
 
 class SponsorsPage extends StatelessWidget {
+  const SponsorsPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
