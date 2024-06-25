@@ -6,7 +6,6 @@ import 'package:treasurehunt/src/pages/sponsor.dart';
 import 'package:treasurehunt/src/widgets/custom_app_bar.dart';
 import 'package:treasurehunt/src/widgets/nav_bar.dart';
 
-
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -32,9 +31,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    double appBarHeight = MediaQuery.of(context).size.height *0.2;
     return Scaffold(
-      appBar:  CustomAppBar(appBarHeight: appBarHeight,),
+      appBar: const CustomAppBar(),
       body: _screens[_selectedIndex],
       bottomNavigationBar: NavBar(
         onItemSelected: _onItemTapped,
@@ -43,4 +41,3 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
-
