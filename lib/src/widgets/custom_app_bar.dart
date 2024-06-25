@@ -5,7 +5,7 @@ import 'package:treasurehunt/src/utils/colors.dart';
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final double appBarHeight;
 
-  CustomAppBar({super.key, required this.appBarHeight});
+  const CustomAppBar({super.key, this.appBarHeight = 145});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         children: [
           Container(
             height: appBarHeight,
-            decoration:  BoxDecoration(
+            decoration: BoxDecoration(
               gradient: const LinearGradient(
                 colors: [AppColors.AppBarColor1, AppColors.AppBarColor2],
                 stops: [0.2, 0.9],

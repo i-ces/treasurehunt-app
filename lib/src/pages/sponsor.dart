@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:treasurehunt/src/utils/sponsors_data.dart';
 import 'package:treasurehunt/src/widgets/accordion.dart';
-import 'package:treasurehunt/src/widgets/dallo.dart';
-import 'package:treasurehunt/src/widgets/sponsor_card.dart';
+import 'package:treasurehunt/src/widgets/floating_bar.dart';
 
 class SponsorsPage extends StatelessWidget {
+  const SponsorsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,10 @@ class SponsorsPage extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Dallo(name: "Get to know our sponsors!", onBackPressed: (){}, ),
+          FloatingBar(
+            name: "Get to know our sponsors!",
+            onBackPressed: () {},
+          ),
           Expanded(
             child: ListView.builder(
               padding: const EdgeInsets.all(16.0),

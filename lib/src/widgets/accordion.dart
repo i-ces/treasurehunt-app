@@ -11,12 +11,12 @@ class Accordion extends StatefulWidget {
   final String sponsorDescription;
 
   const Accordion({
-    Key? key,
+    super.key,
     required this.sponsorType,
     required this.sponsorName,
     required this.sponsorImage,
     required this.sponsorDescription,
-  }) : super(key: key);
+  });
 
   @override
   _AccordionState createState() => _AccordionState();
@@ -90,8 +90,8 @@ class _AccordionState extends State<Accordion>
                     ClipRRect(
                       // Ensures square shape and clipped corners
                       borderRadius: BorderRadius.circular(12.0),
-                      child: widget.sponsorImage != null && widget.sponsorImage!.isNotEmpty
-                          ? Image.asset(widget.sponsorImage!,
+                      child: widget.sponsorImage.isNotEmpty
+                          ? Image.asset(widget.sponsorImage,
                               width: 120,
                               fit: BoxFit.cover,
                             )
