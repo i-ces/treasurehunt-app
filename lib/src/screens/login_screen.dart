@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:treasurehunt/src/screens/verified_screen.dart';
 import 'package:treasurehunt/src/screens/welcome_screen.dart';
 import 'package:treasurehunt/src/utils/colors.dart';
+import 'package:treasurehunt/src/widgets/custom_app_bar.dart';
 import 'package:treasurehunt/src/widgets/custom_button.dart';
 
 class LoginPage extends StatefulWidget {
@@ -33,124 +34,122 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Stack(
-          children: [
-            Positioned(
-              top: 230,
-              right: -20,
-              child: Transform.rotate(
-                angle: -45 * 3.1415927 / 180, // Rotate -45 degrees
-                child: SvgPicture.asset(
-                  'assets/logo.svg',
-                  width: 150,
-                  height: 150,
-                ),
+    return Scaffold(
+      body: Stack(
+        children: [
+          Positioned(
+            top: 230,
+            right: -20,
+            child: Transform.rotate(
+              angle: -45 * 3.1415927 / 180, // Rotate -45 degrees
+              child: SvgPicture.asset(
+                'assets/logo.svg',
+                width: 150,
+                height: 150,
               ),
             ),
-            SingleChildScrollView(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Row(
+          ),
+          SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                const SizedBox(height: 30),
+                // Row(
+                //   children: [
+                //     IconButton(
+                //       onPressed: () {
+                //         Navigator.pushReplacement(
+                //           context,
+                //           MaterialPageRoute(
+                //             builder: (context) => const WelcomeScreen(),
+                //           ),
+                //         );
+                //       },
+                //       icon: const Icon(
+                //         Icons.arrow_back,
+                //         color:
+                //             AppColors.AccentColor, // Set icon color to orange
+                //       ),
+                //     ),
+                //   ],
+                // ),
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      IconButton(
-                        onPressed: () {
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const WelcomeScreen(),
-                            ),
-                          );
-                        },
-                        icon: const Icon(
-                          Icons.arrow_back,
-                          color:
-                              AppColors.AccentColor, // Set icon color to orange
+                      const Text(
+                        "Welcome Coders!",
+                        style: TextStyle(fontSize: 24.0, color: Colors.black),
+                        textAlign: TextAlign.left,
+                      ),
+                      const SizedBox(height: 16.0),
+                      TextFormField(
+                        controller: _usernameController,
+                        decoration: const InputDecoration(
+                          labelText: 'Team Name',
+                          prefixIcon: Icon(
+                            CupertinoIcons.person,
+                            color: AppColors
+                                .AccentColor, // Set icon color to orange
+                          ),
                         ),
+                      ),
+                      const SizedBox(height: 16.0),
+                      TextFormField(
+                        controller: _passwordController,
+                        decoration: InputDecoration(
+                          labelText: 'Password',
+                          prefixIcon: const Icon(
+                            CupertinoIcons.lock,
+                            color: AppColors
+                                .AccentColor, // Set icon color to orange
+                          ),
+                          suffixIcon: IconButton(
+                            icon: Icon(
+                              _obscureText
+                                  ? CupertinoIcons.eye
+                                  : CupertinoIcons.eye_slash,
+                              color: AppColors
+                                  .AccentColor, // Set icon color to orange
+                            ),
+                            onPressed: _togglePasswordVisibility,
+                          ),
+                        ),
+                        obscureText: _obscureText,
+                      ),
+                      const SizedBox(height: 168.0),
+                      Column(
+                        children: [
+                          CustomButton(
+                            text: 'LOGIN',
+                            onPressed: () {
+                              // Navigate to verified screen
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const VerifiedScreen(),
+                                ),
+                              );
+                            },
+                          ),
+                          const SizedBox(
+                            height: 24,
+                          ),
+                          const Text(
+                            "<Remember to follow the owl>",
+                            style: TextStyle(color: Colors.black),
+                          ),
+                        ],
                       ),
                     ],
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          "Welcome Coders!",
-                          style: TextStyle(fontSize: 24.0, color: Colors.black),
-                          textAlign: TextAlign.left,
-                        ),
-                        const SizedBox(height: 16.0),
-                        TextFormField(
-                          controller: _usernameController,
-                          decoration: const InputDecoration(
-                            labelText: 'Team Name',
-                            prefixIcon: Icon(
-                              CupertinoIcons.person,
-                              color: AppColors
-                                  .AccentColor, // Set icon color to orange
-                            ),
-                          ),
-                        ),
-                        const SizedBox(height: 16.0),
-                        TextFormField(
-                          controller: _passwordController,
-                          decoration: InputDecoration(
-                            labelText: 'Password',
-                            prefixIcon: const Icon(
-                              CupertinoIcons.lock,
-                              color: AppColors
-                                  .AccentColor, // Set icon color to orange
-                            ),
-                            suffixIcon: IconButton(
-                              icon: Icon(
-                                _obscureText
-                                    ? CupertinoIcons.eye
-                                    : CupertinoIcons.eye_slash,
-                                color: AppColors
-                                    .AccentColor, // Set icon color to orange
-                              ),
-                              onPressed: _togglePasswordVisibility,
-                            ),
-                          ),
-                          obscureText: _obscureText,
-                        ),
-                        const SizedBox(height: 168.0),
-                        Column(
-                          children: [
-                            CustomButton(
-                              text: 'LOGIN',
-                              onPressed: () {
-                                // Navigate to verified screen
-                                Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        const VerifiedScreen(),
-                                  ),
-                                );
-                              },
-                            ),
-                            const SizedBox(
-                              height: 24,
-                            ),
-                            const Text(
-                              "<Remember to follow the owl>",
-                              style: TextStyle(color: Colors.black),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
