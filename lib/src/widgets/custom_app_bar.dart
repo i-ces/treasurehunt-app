@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:treasurehunt/src/utils/colors.dart';
-import 'package:treasurehunt/src/widgets/dallo.dart';
+import 'package:treasurehunt/src/widgets/floating_bar.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final double appBarHeight;

@@ -8,6 +8,7 @@ class Dallo extends StatelessWidget {
   final bool showElevation;
   final Color dalloColor;
   final Color dalloContentColor;
+  final void Function()? onBackPressed;
 
   const Dallo({
     required this.name,
@@ -17,6 +18,7 @@ class Dallo extends StatelessWidget {
     this.showElevation = true,
     this.dalloColor = const Color.fromRGBO(255, 255, 255, 1),
     this.dalloContentColor = const Color.fromARGB(7, 0, 8, 14),
+    this.onBackPressed,
     super.key,
   });
 
@@ -33,7 +35,8 @@ class Dallo extends StatelessWidget {
         child: Row(
           children: [
             if (showBackButton)
-              IconButton(icon: const Icon(Icons.arrow_back), onPressed: () => {}
+              IconButton(icon: const Icon(Icons.arrow_back), onPressed: onBackPressed
+                      
                   // Navigator.of(context).pop(),
                   ),
             if(contestant)

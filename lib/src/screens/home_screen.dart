@@ -6,7 +6,6 @@ import 'package:treasurehunt/src/pages/sponsor.dart';
 import 'package:treasurehunt/src/widgets/custom_app_bar.dart';
 import 'package:treasurehunt/src/widgets/nav_bar.dart';
 
-
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -26,8 +25,8 @@ class _HomeScreenState extends State<HomeScreen> {
   final List<Widget> _screens = [
     const HomePage(),
     const LeaderboardPage(),
-    const RiddlesPage(),
-    const SponsorPage(),
+    RiddlesPage(),
+    const SponsorsPage(),
   ];
 
   @override
@@ -43,4 +42,3 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
-

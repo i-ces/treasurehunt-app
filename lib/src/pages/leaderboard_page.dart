@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:treasurehunt/src/widgets/custom_app_bar.dart';
-import 'package:treasurehunt/src/widgets/dallo.dart';
+import 'package:treasurehunt/src/widgets/floating_bar.dart';
 import 'package:treasurehunt/src/widgets/leaderboard_component.dart';
 
 class LeaderboardPage extends StatelessWidget {
   const LeaderboardPage({super.key});
 
+static final List<Map<String, dynamic>> dalloData = List.generate(16, (index) {
+    return {
+      'name': 'Error 404',
+      'position': '#${index + 1}',
+      'dalloColor': const Color(0xff233974),
+      'dalloContentColor': const Color(0xffffffff),
+    };
+  });
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,68 +63,87 @@ class LeaderboardPage extends StatelessWidget {
                         ],
                       ),
                     ),
-                    const Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 20, vertical: 4),
-                      child: Dallo(
-                        name: '234',
-                        contestant: true,
-                        position: '#1',
-                        showElevation: false,
-                        dalloColor: Color(0xff233974),
-                        dalloContentColor: Color(0xffffffff)
-                      ),
-                    ),
-                    const Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 20, vertical: 4),
-                      child: Dallo(
-                        name: '456',
-                        contestant: true,
-                        position: '#2',
-                        showElevation: false,
-                        dalloColor: Color(0xff233974),
-                        dalloContentColor: Color(0xffffffff),
-                      ),
-                    ),
-                    const Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 20, vertical: 4),
-                      child: Dallo(
-                        name: '789',
-                        contestant: true,
-                        position: '#3',
-                        showElevation: false,
-                        dalloColor: Color(0xff233974),
-                        dalloContentColor: Color(0xffffffff)
-                      ),
-                    ),
-                    const Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 20, vertical: 4),
-                      child: Dallo(
-                          name: '56664',
-                          contestant: true,
-                          position: '#4',
-                          showElevation: false,
-                          dalloColor: Color(0xff233974),
-                          dalloContentColor: Color(0xffffffff)
-                          ),
+                    // const Padding(
+                    //   padding:
+                    //       EdgeInsets.symmetric(horizontal: 20, vertical: 4),
+                    //   child: Dallo(
+                    //     name: '234',
+                    //     contestant: true,
+                    //     position: '#1',
+                    //     showElevation: false,
+                    //     dalloColor: Color(0xff233974),
+                    //     dalloContentColor: Color(0xffffffff)
+                    //   ),
+                    // ),
+                    // const Padding(
+                    //   padding:
+                    //       EdgeInsets.symmetric(horizontal: 20, vertical: 4),
+                    //   child: Dallo(
+                    //     name: '456',
+                    //     contestant: true,
+                    //     position: '#2',
+                    //     showElevation: false,
+                    //     dalloColor: Color(0xff233974),
+                    //     dalloContentColor: Color(0xffffffff),
+                    //   ),
+                    // ),
+                    // const Padding(
+                    //   padding:
+                    //       EdgeInsets.symmetric(horizontal: 20, vertical: 4),
+                    //   child: Dallo(
+                    //     name: '789',
+                    //     contestant: true,
+                    //     position: '#3',
+                    //     showElevation: false,
+                    //     dalloColor: Color(0xff233974),
+                    //     dalloContentColor: Color(0xffffffff)
+                    //   ),
+                    // ),
+                    // const Padding(
+                    //   padding:
+                    //       EdgeInsets.symmetric(horizontal: 20, vertical: 4),
+                    //   child: Dallo(
+                    //       name: '56664',
+                    //       contestant: true,
+                    //       position: '#4',
+                    //       showElevation: false,
+                    //       dalloColor: Color(0xff233974),
+                    //       dalloContentColor: Color(0xffffffff)
+                    //       ),
                           
-                    ),
-                    const Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 20, vertical: 4),
-                      child: Dallo(
-                          name: '56664',
-                          contestant: true,
-                          position: '#4',
-                          showElevation: false,
-                          dalloColor: Color(0xff233974),
-                          dalloContentColor: Color(0xffffffff)
-                          ),
+                    // ),
+                    // const Padding(
+                    //   padding:
+                    //       EdgeInsets.symmetric(horizontal: 20, vertical: 4),
+                    //   child: Dallo(
+                    //       name: '56664',
+                    //       contestant: true,
+                    //       position: '#4',
+                    //       showElevation: false,
+                    //       dalloColor: Color(0xff233974),
+                    //       dalloContentColor: Color(0xffffffff)
+                    //       ),
                           
-                    )
+                    // )
+                    ListView.builder(
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      itemCount: dalloData.length,
+                      itemBuilder: (context, index) {
+                        final data = dalloData[index];
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 4),
+                          child: Dallo(
+                            name: data['name'],
+                            contestant: true,
+                            position: data['position'],
+                            showElevation: false,
+                            dalloColor: data['dalloColor'],
+                            dalloContentColor: data['dalloContentColor'],
+                          ),
+                        );
+                      },
+                    ),
                   ],
                 ),
               ),
