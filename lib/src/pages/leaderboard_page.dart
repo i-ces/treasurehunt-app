@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:treasurehunt/src/utils/colors.dart';
 import 'package:treasurehunt/src/widgets/custom_app_bar.dart';
 import 'package:treasurehunt/src/widgets/floating_bar.dart';
 import 'package:treasurehunt/src/widgets/leaderboard_component.dart';
@@ -27,8 +28,8 @@ class LeaderboardPage extends StatelessWidget {
                 padding: const EdgeInsets.only(bottom: 12),
                 child: Column(
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
+                    const Padding(
+                      padding: EdgeInsets.symmetric(
                           horizontal: 14.0, vertical: 22.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -42,8 +43,7 @@ class LeaderboardPage extends StatelessWidget {
                             circleWidth: 100,
                             smallCircleWidth: 30,
                             smallCircleHeight: 30,
-                            containerPaddingFromTop:
-                                const EdgeInsets.only(top: 50),
+                            containerPaddingFromTop: EdgeInsets.only(top: 50),
                             positionSmallCircle: 60 / 2,
                             smallCircleText: '#2',
                           ),
@@ -58,8 +58,7 @@ class LeaderboardPage extends StatelessWidget {
                             circleWidth: 100,
                             smallCircleHeight: 30,
                             smallCircleWidth: 30,
-                            containerPaddingFromTop:
-                                const EdgeInsets.only(top: 50),
+                            containerPaddingFromTop: EdgeInsets.only(top: 50),
                             positionSmallCircle: 60 / 2,
                             smallCircleText: '#3',
                           )
@@ -133,17 +132,26 @@ class LeaderboardPage extends StatelessWidget {
                       physics: const NeverScrollableScrollPhysics(),
                       itemCount: dalloData.length,
                       itemBuilder: (context, index) {
-                        final data = dalloData[index];
                         return Padding(
                           padding: const EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 4),
-                          child: FloatingBar(
-                            name: data['name'],
-                            contestant: true,
-                            position: data['position'],
-                            showElevation: false,
-                            dalloColor: data['dalloColor'],
-                            dalloContentColor: data['dalloContentColor'],
+                              horizontal: 20, vertical: 10),
+                          child: Container(
+                            height: 70,
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 12.0, horizontal: 24.0),
+                            decoration: BoxDecoration(
+                              color: AppColors.MainColor,
+                              borderRadius: BorderRadius.circular(
+                                32,
+                              ),
+                            ),
+                            child: const Center(
+                              child: Text("#01 Team Diggers",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 24,
+                                  )),
+                            ),
                           ),
                         );
                       },
