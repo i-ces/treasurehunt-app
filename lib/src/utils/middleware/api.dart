@@ -6,7 +6,12 @@ const String API_URL = "http://localhost:8080";
 class ApiMiddleware {
   Future<http.Response> get(String path) async {
     final url = Uri.parse('$API_URL$path');
-    final response = await http.get(url);
+    final response = await http.get(
+      url,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    );
     return response;
   }
 
