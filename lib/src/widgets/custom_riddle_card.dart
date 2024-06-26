@@ -1,5 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:treasurehunt/src/screens/selecting_numbers.dart';
+import 'package:treasurehunt/src/handlers/riddle_handler.dart';
 import 'package:treasurehunt/src/utils/colors.dart';
 
 class CustomRiddleCard extends StatelessWidget {
@@ -8,11 +9,13 @@ class CustomRiddleCard extends StatelessWidget {
     required this.riddle,
     required this.id,
     this.isCompleted = false,
+    this.isUnlocked = false,
   });
 
-  final bool isCompleted;
-  final String riddle;
   final int id;
+  final String riddle;
+  final bool isCompleted;
+  final bool isUnlocked;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +26,11 @@ class CustomRiddleCard extends StatelessWidget {
       width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(30),
-        color: isCompleted ? AppColors.AccentColor : AppColors.FadedGrey,
+        color: isCompleted
+            ? AppColors.AccentColor
+            : isUnlocked
+                ? Colors.blueGrey[500]
+                : AppColors.FadedGrey,
         boxShadow: const [
           BoxShadow(
             color: AppColors.FadedGrey,
@@ -33,16 +40,22 @@ class CustomRiddleCard extends StatelessWidget {
         ],
       ),
       child: InkWell(
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => RiddleDetailPage(
-                riddleTitle: riddle,
-                riddleNumber: id,
-              ),
-            ),
-          );
+        onTap: () async {
+          try {
+            final response = await RiddleHandler.userLevel();
+            print('response: $response');
+          } catch (e) {
+            print('error: $e');
+          }
+          // Navigator.push(
+          //   context,
+          //   MaterialPageRoute(
+          //     builder: (context) => RiddleDetailPage(
+          //       riddleTitle: riddle,
+          //       riddleNumber: id,
+          //     ),
+          //   ),
+          // );
         },
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -51,8 +64,10 @@ class CustomRiddleCard extends StatelessWidget {
             children: [
               if (!isCompleted) ...[
                 Icon(
-                  Icons.lock,
-                  color: isCompleted
+                  isUnlocked
+                      ? CupertinoIcons.lock_open_fill
+                      : CupertinoIcons.lock_fill,
+                  color: isCompleted || isUnlocked
                       ? Colors.white
                       : AppColors.TextColor1.withOpacity(0.6),
                 ),
@@ -62,7 +77,7 @@ class CustomRiddleCard extends StatelessWidget {
                 riddle,
                 style: TextStyle(
                   fontSize: 20,
-                  color: isCompleted
+                  color: isCompleted || isUnlocked
                       ? Colors.white
                       : AppColors.TextColor1.withOpacity(0.6),
                   fontWeight: FontWeight.w500,

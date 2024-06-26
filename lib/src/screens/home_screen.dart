@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:treasurehunt/src/pages/home_page.dart';
 import 'package:treasurehunt/src/pages/leaderboard_page.dart';
-import 'package:treasurehunt/src/pages/riddles.dart';
+import 'package:treasurehunt/src/pages/level.dart';
 import 'package:treasurehunt/src/pages/sponsor.dart';
+import 'package:treasurehunt/src/utils/services/token_service.dart';
 import 'package:treasurehunt/src/widgets/custom_app_bar.dart';
 import 'package:treasurehunt/src/widgets/nav_bar.dart';
 
@@ -16,21 +17,36 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
 
+  int userlevel = 0;
+
+  void fetchUserLevel() async {
+    final level = await getUserLevel();
+    setState(() {
+      userlevel = level;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    fetchUserLevel();
+  }
+
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
   }
 
-  final List<Widget> _screens = [
-    const HomePage(level: Level.zero),
-    const LeaderboardPage(),
-    RiddlesPage(),
-    const SponsorsPage(),
-  ];
-
   @override
   Widget build(BuildContext context) {
+    final List<Widget> _screens = [
+      HomePage(level: userlevel),
+      const LeaderboardPage(),
+      LevelPage(level: userlevel),
+      const SponsorsPage(),
+    ];
+
     return Scaffold(
       appBar: const CustomAppBar(),
       body: _screens[_selectedIndex],

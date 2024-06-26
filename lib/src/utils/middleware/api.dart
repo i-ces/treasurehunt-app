@@ -5,7 +5,7 @@ import 'dart:convert';
 import 'package:treasurehunt/src/utils/services/token_service.dart';
 
 class ApiMiddleware {
-  Future<http.Response> get(String path) async {
+  static Future<http.Response> get(String path) async {
     final token = await getBearerToken();
     final url = Uri.parse('$API_URL$path');
     final response = await http.get(
