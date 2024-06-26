@@ -15,25 +15,22 @@ class HomePage extends StatelessWidget {
     double width = MediaQuery.of(context).size.width; 
 
     return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Stack(
-                children: [
-                  Container(
-                    width: width,
-                    child: SvgPicture.asset(
-                      'assets/images/home-bg.svg',
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  Dallo(name: 'The Road to Mr. Umi'),
-                ],
+      appBar: CustomAppBar(appBarHeight: 200, name: 'I am anisha', showDallo: true),
+      body: Column(
+        children: [
+          // Dallo(name: 'The Road to Mr. Umi'),
+          Expanded(
+            child: SingleChildScrollView(
+              child: Container(
+                width: width,
+                child: SvgPicture.asset(
+                  'assets/images/home-bg.svg',
+                  fit: BoxFit.cover,
+                ),
               ),
-            ],
+            ),
           ),
-        ),
+        ],
       ),
     );
   }
