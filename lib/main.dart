@@ -19,6 +19,7 @@ class TreasureHuntApp extends StatelessWidget {
         iconTheme: const IconThemeData(
           color: AppColors.AccentColor,
         ),
+        scaffoldBackgroundColor: Colors.white,
       ),
       home: const SplashScreen(),
     );
