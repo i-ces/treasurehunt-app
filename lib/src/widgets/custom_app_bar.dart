@@ -8,9 +8,16 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String name;
   final bool showDallo;
   final bool showBackButtonInDallo;
-  final void Function() ?onBackPressedInDallo;
+  final void Function()? onBackPressedInDallo;
 
-  CustomAppBar({super.key, required this.appBarHeight, required this.name, required this.showDallo, this.showBackButtonInDallo = false, this.onBackPressedInDallo});
+  const CustomAppBar({
+    super.key,
+    this.appBarHeight = 250,
+    this.name = "",
+    this.showDallo = false,
+    this.showBackButtonInDallo = false,
+    this.onBackPressedInDallo,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +28,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         Container(
           // padding: EdgeInsets.only(top: 30),
           height: appBarHeight,
-          decoration:  BoxDecoration(
+          decoration: BoxDecoration(
             gradient: const LinearGradient(
               colors: [AppColors.AppBarColor1, AppColors.AppBarColor2],
               stops: [0.2, 0.9],
@@ -46,24 +53,28 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                    SvgPicture.asset(
-                      'assets/images/logo-white.svg',
-                      width: width * 0.3,
-                      fit: BoxFit.contain,
-                    ),
-                    SvgPicture.asset(
-                      'assets/images/ices-logo.svg',
-                      width: width * 0.22,
-                      fit: BoxFit.contain,
-                    ),
-            ],),
+                SvgPicture.asset(
+                  'assets/images/logo-white.svg',
+                  width: width * 0.3,
+                  fit: BoxFit.contain,
+                ),
+                SvgPicture.asset(
+                  'assets/images/ices-logo.svg',
+                  width: width * 0.22,
+                  fit: BoxFit.contain,
+                ),
+              ],
+            ),
           ),
         ),
-      if (showDallo)
-       Positioned(
-          bottom: -45, 
-          child: DalloContainer(name: name, showBackButtonInDallo: showBackButtonInDallo, onBackPressedInDallo: onBackPressedInDallo),
-        ),
+        if (showDallo)
+          Positioned(
+            bottom: -45,
+            child: DalloContainer(
+                name: name,
+                showBackButtonInDallo: showBackButtonInDallo,
+                onBackPressedInDallo: onBackPressedInDallo),
+          ),
       ],
     );
   }
@@ -71,18 +82,28 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Size get preferredSize => Size.fromHeight(appBarHeight);
 }
+
 class DalloContainer extends StatelessWidget {
   final String name;
   final bool showBackButtonInDallo;
   final void Function()? onBackPressedInDallo;
-   DalloContainer({super.key, required this.name, required this.showBackButtonInDallo,  this.onBackPressedInDallo});
+  const DalloContainer(
+      {super.key,
+      required this.name,
+      required this.showBackButtonInDallo,
+      this.onBackPressedInDallo});
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-      width: MediaQuery.of(context).size.width, 
-      height: 60, 
-      child: Dallo(name: name, dalloContentColor: Color(0xff233974), showBackButton: showBackButtonInDallo, onBackPressed: onBackPressedInDallo,),
+      width: MediaQuery.of(context).size.width,
+      height: 60,
+      child: FloatingBar(
+        name: name,
+        dalloContentColor: const Color(0xff233974),
+        showBackButton: showBackButtonInDallo,
+        onBackPressed: onBackPressedInDallo,
+      ),
     );
   }
 }

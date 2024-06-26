@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Dallo extends StatelessWidget {
+class FloatingBar extends StatelessWidget {
   final String name;
   final bool showBackButton;
   final bool contestant;
@@ -10,7 +10,7 @@ class Dallo extends StatelessWidget {
   final Color dalloContentColor;
   final void Function()? onBackPressed;
 
-  const Dallo({
+  const FloatingBar({
     required this.name,
     this.showBackButton = false,
     this.contestant = false,

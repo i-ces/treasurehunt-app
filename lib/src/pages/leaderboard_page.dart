@@ -6,7 +6,8 @@ import 'package:treasurehunt/src/widgets/leaderboard_component.dart';
 class LeaderboardPage extends StatelessWidget {
   const LeaderboardPage({super.key});
 
-static final List<Map<String, dynamic>> dalloData = List.generate(16, (index) {
+  static final List<Map<String, dynamic>> dalloData =
+      List.generate(16, (index) {
     return {
       'name': 'Error 404',
       'position': '#${index + 1}',
@@ -17,7 +18,7 @@ static final List<Map<String, dynamic>> dalloData = List.generate(16, (index) {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(appBarHeight: 200, name: '', showDallo: false),
+      appBar: const CustomAppBar(appBarHeight: 200, name: '', showDallo: false),
       body: Column(
         children: [
           Expanded(
@@ -41,8 +42,9 @@ static final List<Map<String, dynamic>> dalloData = List.generate(16, (index) {
                             circleWidth: 100,
                             smallCircleWidth: 30,
                             smallCircleHeight: 30,
-                            containerPaddingFromTop: const EdgeInsets.only(top: 50),
-                            positionSmallCircle: 60/2,
+                            containerPaddingFromTop:
+                                const EdgeInsets.only(top: 50),
+                            positionSmallCircle: 60 / 2,
                             smallCircleText: '#2',
                           ),
                           LeaderboardComponent(
@@ -56,8 +58,9 @@ static final List<Map<String, dynamic>> dalloData = List.generate(16, (index) {
                             circleWidth: 100,
                             smallCircleHeight: 30,
                             smallCircleWidth: 30,
-                            containerPaddingFromTop: const EdgeInsets.only(top: 50),
-                            positionSmallCircle: 60/2,
+                            containerPaddingFromTop:
+                                const EdgeInsets.only(top: 50),
+                            positionSmallCircle: 60 / 2,
                             smallCircleText: '#3',
                           )
                         ],
@@ -66,7 +69,7 @@ static final List<Map<String, dynamic>> dalloData = List.generate(16, (index) {
                     // const Padding(
                     //   padding:
                     //       EdgeInsets.symmetric(horizontal: 20, vertical: 4),
-                    //   child: Dallo(
+                    //   child: FloatingBar(
                     //     name: '234',
                     //     contestant: true,
                     //     position: '#1',
@@ -78,7 +81,7 @@ static final List<Map<String, dynamic>> dalloData = List.generate(16, (index) {
                     // const Padding(
                     //   padding:
                     //       EdgeInsets.symmetric(horizontal: 20, vertical: 4),
-                    //   child: Dallo(
+                    //   child: FloatingBar(
                     //     name: '456',
                     //     contestant: true,
                     //     position: '#2',
@@ -90,7 +93,7 @@ static final List<Map<String, dynamic>> dalloData = List.generate(16, (index) {
                     // const Padding(
                     //   padding:
                     //       EdgeInsets.symmetric(horizontal: 20, vertical: 4),
-                    //   child: Dallo(
+                    //   child: FloatingBar(
                     //     name: '789',
                     //     contestant: true,
                     //     position: '#3',
@@ -102,7 +105,7 @@ static final List<Map<String, dynamic>> dalloData = List.generate(16, (index) {
                     // const Padding(
                     //   padding:
                     //       EdgeInsets.symmetric(horizontal: 20, vertical: 4),
-                    //   child: Dallo(
+                    //   child: FloatingBar(
                     //       name: '56664',
                     //       contestant: true,
                     //       position: '#4',
@@ -110,12 +113,12 @@ static final List<Map<String, dynamic>> dalloData = List.generate(16, (index) {
                     //       dalloColor: Color(0xff233974),
                     //       dalloContentColor: Color(0xffffffff)
                     //       ),
-                          
+
                     // ),
                     // const Padding(
                     //   padding:
                     //       EdgeInsets.symmetric(horizontal: 20, vertical: 4),
-                    //   child: Dallo(
+                    //   child: FloatingBar(
                     //       name: '56664',
                     //       contestant: true,
                     //       position: '#4',
@@ -123,17 +126,18 @@ static final List<Map<String, dynamic>> dalloData = List.generate(16, (index) {
                     //       dalloColor: Color(0xff233974),
                     //       dalloContentColor: Color(0xffffffff)
                     //       ),
-                          
+
                     // )
                     ListView.builder(
                       shrinkWrap: true,
-                      physics: NeverScrollableScrollPhysics(),
+                      physics: const NeverScrollableScrollPhysics(),
                       itemCount: dalloData.length,
                       itemBuilder: (context, index) {
                         final data = dalloData[index];
                         return Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 4),
-                          child: Dallo(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 4),
+                          child: FloatingBar(
                             name: data['name'],
                             contestant: true,
                             position: data['position'],
