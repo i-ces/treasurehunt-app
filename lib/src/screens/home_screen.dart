@@ -23,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   final List<Widget> _screens = [
-    const HomePage(),
+    const HomePage(level: Level.zero),
     const LeaderboardPage(),
     RiddlesPage(),
     const SponsorsPage(),

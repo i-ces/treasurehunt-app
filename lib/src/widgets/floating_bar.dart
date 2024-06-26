@@ -35,24 +35,23 @@ class Dallo extends StatelessWidget {
         child: Row(
           children: [
             if (showBackButton)
-              IconButton(icon: const Icon(Icons.arrow_back), onPressed: onBackPressed
-                      
+              IconButton(
+                  icon: const Icon(Icons.arrow_back), onPressed: onBackPressed
+
                   // Navigator.of(context).pop(),
                   ),
-            if(contestant)
-            
+            if (contestant)
               Expanded(
-                child: Align(
-                  alignment: Alignment.center,
-                  child: Text(
-                    position,
-                    style: const TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w600,
-                      fontFamily: 'Poppins',
-                      color: Color(0xffffffff)
-                      ),))),
-            
+                  child: Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                        position,
+                        style: const TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w600,
+                            fontFamily: 'Poppins',
+                            color: Color(0xffffffff)),
+                      ))),
             Expanded(
               child: Align(
                 alignment: Alignment.center,
@@ -63,10 +62,11 @@ class Dallo extends StatelessWidget {
                     fontWeight: FontWeight.w400,
                     fontFamily: 'Poppins',
                     color: dalloContentColor,
-                    ),
-                    // background: #090F4780;
-    
-                  textAlign: showBackButton ? TextAlign.start : TextAlign.center,
+                  ),
+                  // background: #090F4780;
+
+                  textAlign:
+                      showBackButton ? TextAlign.start : TextAlign.center,
                 ),
               ),
             ),

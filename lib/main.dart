@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:treasurehunt/src/screens/splash_screen.dart';
+import 'package:treasurehunt/src/screens/home_screen.dart';
 import 'package:treasurehunt/src/utils/colors.dart';
 
 void main() {
@@ -19,8 +19,9 @@ class TreasureHuntApp extends StatelessWidget {
         iconTheme: const IconThemeData(
           color: AppColors.AccentColor,
         ),
+        scaffoldBackgroundColor: Colors.white,
       ),
-      home: const SplashScreen(),
+      home: const HomeScreen(),
     );
   }
 }

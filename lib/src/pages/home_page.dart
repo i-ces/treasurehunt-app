@@ -1,36 +1,50 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:treasurehunt/src/widgets/accordion.dart';
-import 'package:treasurehunt/src/widgets/custom_app_bar.dart';
-import 'package:treasurehunt/src/widgets/custom_button.dart';
-import 'package:treasurehunt/src/widgets/floating_bar.dart';
+
+enum Level { zero, one, two, three, four, five, six, seven, eight, nine, ten }
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  const HomePage({
+    this.level = Level.zero,
+    super.key,
+  });
+  final Level level;
 
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width; 
+    String getImage(Level currentLabel) {
+      switch (currentLabel) {
+        case Level.zero:
+          return 'Level-00.png';
+        case Level.one:
+          return 'Level-01.png';
+        case Level.two:
+          return 'Level-02.png';
+        case Level.three:
+          return 'Level-03.png';
+        case Level.four:
+          return 'Level-04.png';
+        case Level.five:
+          return 'Level-05.png';
+        case Level.six:
+          return 'Level-06.png';
+        case Level.seven:
+          return 'Level-07.png';
+        case Level.eight:
+          return 'Level-08.png';
+        case Level.nine:
+          return 'Level-09.png';
+        case Level.ten:
+          return 'Level-10.png';
+        default:
+          return 'Level-00.png';
+      }
+    }
 
     return Scaffold(
-      appBar: CustomAppBar(appBarHeight: 200, name: 'The road to Mr. Uni', showDallo: true),
-      body: Column(
-        children: [
-          // Dallo(name: 'The Road to Mr. Umi'),
-          Expanded(
-            child: SingleChildScrollView(
-              child: Container(
-                width: width,
-                child: SvgPicture.asset(
-                  'assets/images/home-bg.svg',
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-          ),
-        ],
+      body: SingleChildScrollView(
+        child: Image.asset(
+          "assets/images/${getImage(level)}",
+        ),
       ),
     );
   }
