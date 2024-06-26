@@ -6,10 +6,10 @@ class NavBar extends StatefulWidget {
   final int selectedIndex;
 
   const NavBar({
-    Key? key,
+    super.key,
     required this.onItemSelected,
     required this.selectedIndex,
-  }) : super(key: key);
+  });
 
   @override
   _NavBarState createState() => _NavBarState();
@@ -19,6 +19,9 @@ class _NavBarState extends State<NavBar> {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
+      selectedIconTheme: IconThemeData(
+        color: Colors.blue,
+      ),
       items: <BottomNavigationBarItem>[
         BottomNavigationBarItem(
           icon: Icon(
@@ -29,7 +32,7 @@ class _NavBarState extends State<NavBar> {
           ),
           label: '',
         ),
-                BottomNavigationBarItem(
+        BottomNavigationBarItem(
           icon: Icon(
             Icons.assessment_rounded,
             color: widget.selectedIndex == 1
@@ -47,7 +50,6 @@ class _NavBarState extends State<NavBar> {
           ),
           label: '',
         ),
-
         BottomNavigationBarItem(
           icon: Icon(
             Icons.lightbulb_rounded,

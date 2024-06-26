@@ -4,7 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:treasurehunt/src/widgets/accordion.dart';
 import 'package:treasurehunt/src/widgets/custom_app_bar.dart';
 import 'package:treasurehunt/src/widgets/custom_button.dart';
-import 'package:treasurehunt/src/widgets/dallo.dart';
+import 'package:treasurehunt/src/widgets/floating_bar.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -28,7 +28,7 @@ class HomePage extends StatelessWidget {
                       fit: BoxFit.cover,
                     ),
                   ),
-                  Dallo(name: 'The Road to Mr. Umi', onBackPressed: (){}),
+                  FloatingBar(name: 'The Road to Mr. Umi', onBackPressed: (){}),
                 ],
               ),
             ],
