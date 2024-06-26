@@ -5,16 +5,18 @@ import 'package:treasurehunt/src/screens/selecting_numbers.dart';
 import 'package:treasurehunt/src/utils/colors.dart';
 import 'package:treasurehunt/src/widgets/custom_app_bar.dart';
 
+import 'package:treasurehunt/src/widgets/custom_riddle_card.dart';
 
 class RiddlesPage extends StatelessWidget {
-  final List<String> riddles = List.generate(20, (index) => 'Riddle ${index + 1}');
+  final List<String> riddles = 
+      List.generate(9, (index) => 'Riddle #0${index + 1}');
 
   RiddlesPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(appBarHeight: 200, name: '', showDallo: false),
+      appBar: CustomAppBar(appBarHeight: 200, name: '', showDallo: false,),
       body: ListView.builder(
         padding: const EdgeInsets.all(8.0),
         itemCount: riddles.length,
@@ -45,9 +47,10 @@ class RiddlesPage extends StatelessWidget {
               ),
             ),
           );
+          return CustomRiddleCard(
+              riddle: riddles[index], id: index + 1, isCompleted: index == 0);
         },
       ),
     );
   }
 }
-

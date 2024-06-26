@@ -7,8 +7,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final double appBarHeight;
   final String name;
   final bool showDallo;
+  final bool showBackButtonInDallo;
+  final void Function() ?onBackPressedInDallo;
 
-  CustomAppBar({super.key, required this.appBarHeight, required this.name, required this.showDallo});
+  CustomAppBar({super.key, required this.appBarHeight, required this.name, required this.showDallo, this.showBackButtonInDallo = false, this.onBackPressedInDallo});
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +62,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       if (showDallo)
        Positioned(
           bottom: -45, 
-          child: DalloContainer(name: name),
+          child: DalloContainer(name: name, showBackButtonInDallo: showBackButtonInDallo, onBackPressedInDallo: onBackPressedInDallo),
         ),
       ],
     );
@@ -71,14 +73,16 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 }
 class DalloContainer extends StatelessWidget {
   final String name;
-  const DalloContainer({super.key, required this.name});
+  final bool showBackButtonInDallo;
+  final void Function()? onBackPressedInDallo;
+   DalloContainer({super.key, required this.name, required this.showBackButtonInDallo,  this.onBackPressedInDallo});
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
       width: MediaQuery.of(context).size.width, 
       height: 60, 
-      child: Dallo(name: name, dalloContentColor: Color(0xff233974),),
+      child: Dallo(name: name, dalloContentColor: Color(0xff233974), showBackButton: showBackButtonInDallo, onBackPressed: onBackPressedInDallo,),
     );
   }
 }
