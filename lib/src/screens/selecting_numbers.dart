@@ -21,16 +21,11 @@ class RiddleDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(),
+      appBar: CustomAppBar(appBarHeight: 200, name: 'Riddle $riddleNumber', showDallo: true, showBackButtonInDallo: true, onBackPressedInDallo: () => Navigator.of(context).pop(),),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           const SizedBox(height: 16),
-          FloatingBar(
-            name: 'Riddle $riddleNumber',
-            showBackButton: true,
-            onBackPressed: () => Navigator.of(context).pop(),
-          ),
           Expanded(
             // child:
             //  FutureBuilder<String>(
