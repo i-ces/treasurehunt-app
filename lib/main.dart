@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:treasurehunt/src/screens/correct_ans.dart';
+import 'package:treasurehunt/src/screens/home_screen.dart';
 import 'package:treasurehunt/src/utils/colors.dart';
 
 void main() {
@@ -21,7 +21,7 @@ class TreasureHuntApp extends StatelessWidget {
         ),
         scaffoldBackgroundColor: Colors.white,
       ),
-      home: const CorrectAns(status: Status.congratulations),
+      home: const HomeScreen(),
     );
   }
 }
