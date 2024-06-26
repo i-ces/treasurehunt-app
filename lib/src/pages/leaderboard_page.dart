@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:treasurehunt/src/utils/colors.dart';
 import 'package:treasurehunt/src/widgets/custom_app_bar.dart';
-import 'package:treasurehunt/src/widgets/floating_bar.dart';
 import 'package:treasurehunt/src/widgets/leaderboard_component.dart';
 
 class LeaderboardPage extends StatelessWidget {
