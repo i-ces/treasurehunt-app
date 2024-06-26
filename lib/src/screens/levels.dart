@@ -20,7 +20,7 @@ class _LevelsPageState extends State<LevelsPage> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Dallo(name: 'Riddle #001'),
+            Dallo(name: 'Riddle #001', onBackPressed: (){},),
             SizedBox(height: 20),
             Text(
               "Level-01",

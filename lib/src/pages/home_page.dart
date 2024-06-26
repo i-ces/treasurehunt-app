@@ -24,11 +24,11 @@ class HomePage extends StatelessWidget {
                   Container(
                     width: width,
                     child: SvgPicture.asset(
-                      'assets/images/home-bg.svg',
+                      'images/home-bg.svg',
                       fit: BoxFit.cover,
                     ),
                   ),
-                  Dallo(name: 'The Road to Mr. Umi'),
+                  Dallo(name: 'The Road to Mr. Umi', onBackPressed: (){}),
                 ],
               ),
             ],
