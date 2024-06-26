@@ -1,3 +1,1 @@
-class Constants {
-  final API_URL = 'https://treasurehunt-api.onrender.com/api';
-}
+const API_URL = 'https://treasurehunt-api.onrender.com/api';
