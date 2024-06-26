@@ -1,15 +1,20 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+import 'package:treasurehunt/src/utils/services/token_service.dart';
+
 const String API_URL = "http://localhost:8080";
 
 class ApiMiddleware {
   Future<http.Response> get(String path) async {
+    final token = await getBearerToken();
     final url = Uri.parse('$API_URL$path');
     final response = await http.get(
       url,
       headers: {
         'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Authorization': 'Bearer $token',
       },
     );
     return response;
