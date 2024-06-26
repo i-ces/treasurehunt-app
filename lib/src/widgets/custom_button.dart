@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:treasurehunt/src/utils/colors.dart';
 
 class CustomButton extends StatelessWidget {
   final String text;
@@ -18,19 +19,20 @@ class CustomButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-          backgroundColor: const Color(0xFF233974), // Background color
+          backgroundColor: AppColors.AccentColor, // Background color
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30.0),
           ),
           padding: const EdgeInsets.symmetric(horizontal: 45, vertical: 13),
         ),
         child: Text(
-          text,
+          text.toUpperCase(),
           style: const TextStyle(
+            letterSpacing: 1.2,
             color: Colors.white,
             fontFamily: 'Roboto',
             fontSize: 18,
-            fontWeight: FontWeight.normal,
+            fontWeight: FontWeight.w600,
           ),
         ),
       ),

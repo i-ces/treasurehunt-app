@@ -18,6 +18,7 @@ class FloatingBar extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(48.0),
       ),
+      color: Colors.white,
       elevation: 10,
       child: Padding(
         padding: const EdgeInsets.all(16.0),
