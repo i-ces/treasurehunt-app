@@ -15,7 +15,7 @@ class HomePage extends StatelessWidget {
     double width = MediaQuery.of(context).size.width; 
 
     return Scaffold(
-      appBar: CustomAppBar(appBarHeight: 200, name: 'I am anisha', showDallo: true),
+      appBar: CustomAppBar(appBarHeight: 200, name: 'The road to Mr. Uni', showDallo: true),
       body: Column(
         children: [
           // Dallo(name: 'The Road to Mr. Umi'),

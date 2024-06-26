@@ -7,6 +7,7 @@ class Dallo extends StatelessWidget {
   final String position;
   final bool showElevation;
   final Color dalloColor;
+  final Color dalloContentColor;
 
   const Dallo({
     required this.name,
@@ -14,7 +15,8 @@ class Dallo extends StatelessWidget {
     this.contestant = false,
     this.position = '',
     this.showElevation = true,
-    this.dalloColor = Colors.white,
+    this.dalloColor = const Color.fromRGBO(255, 255, 255, 1),
+    this.dalloContentColor = const Color.fromARGB(7, 0, 8, 14),
     super.key,
   });
 
@@ -35,6 +37,7 @@ class Dallo extends StatelessWidget {
                   // Navigator.of(context).pop(),
                   ),
             if(contestant)
+            
               Expanded(
                 child: Align(
                   alignment: Alignment.center,
@@ -42,20 +45,21 @@ class Dallo extends StatelessWidget {
                     position,
                     style: const TextStyle(
                       fontSize: 20,
-                      fontWeight: FontWeight.w400,
+                      fontWeight: FontWeight.w600,
                       fontFamily: 'Poppins',
-                      color: Color(0xff090F4780)
+                      color: Color(0xffffffff)
                       ),))),
+            
             Expanded(
               child: Align(
                 alignment: Alignment.center,
                 child: Text(
                   name,
-                  style: const TextStyle(
-                    fontSize: 20,
+                  style: TextStyle(
+                    fontSize: 18,
                     fontWeight: FontWeight.w400,
                     fontFamily: 'Poppins',
-                    color: Color(0xff090F4780)
+                    color: dalloContentColor,
                     ),
                     // background: #090F4780;
     

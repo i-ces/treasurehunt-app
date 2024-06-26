@@ -78,7 +78,7 @@ class DalloContainer extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
       width: MediaQuery.of(context).size.width, 
       height: 60, 
-      child: Dallo(name: name),
+      child: Dallo(name: name, dalloContentColor: Color(0xff233974),),
     );
   }
 }

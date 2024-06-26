@@ -6,8 +6,13 @@ class LeaderboardComponent extends StatelessWidget {
   final double ?containerWidth;
   final double ?circleHeight;
   final double ?circleWidth;
-  final double ?containerPaddingFromTop;
-  const LeaderboardComponent({Key? key, required this.teamname, this.containerHeight, this.containerWidth, this.circleHeight, this.circleWidth, this.containerPaddingFromTop});
+  final EdgeInsetsGeometry containerPaddingFromTop;
+  final double ?smallCircleHeight;
+  final double ?smallCircleWidth;
+  final double ?positionSmallCircle;
+  final String smallCircleText;
+
+  LeaderboardComponent({Key? key, required this.teamname, this.containerHeight, this.smallCircleText='#1', this.containerWidth, this.circleHeight, this.circleWidth, this.containerPaddingFromTop = const EdgeInsets.only(top: 80), this.positionSmallCircle, this.smallCircleHeight, this.smallCircleWidth});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +30,7 @@ class LeaderboardComponent extends StatelessWidget {
               borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20.0), bottomRight: Radius.circular(20.0))
             ),
             child: Padding(
-              padding: const EdgeInsets.only(bottom: 0.5),
+              padding: containerPaddingFromTop,
               child: Align(
                 alignment: Alignment.center,
                 child: Text(teamname, style:  const TextStyle(color: Color(0xff090F47), fontFamily: 'Poppins', fontWeight: FontWeight.w500, fontSize: 21))),
@@ -47,17 +52,17 @@ class LeaderboardComponent extends StatelessWidget {
           ),
           Positioned(
             bottom: -20,
-            left: (circleWidth??100)/2,
+            left: positionSmallCircle??100/2,
             child: Container(
-              height: 41,
+              height: smallCircleHeight ?? 41,
               width:41,
               decoration: const BoxDecoration(
                 shape: BoxShape.circle,
                 color: Color(0xffFBAE40),
               ),
-              child: const Align(
+              child:  Align(
                 alignment: Alignment.center,
-                child: const Text('#1', style: TextStyle(
+                child:  Text(smallCircleText, style: const TextStyle(
                   color: Colors.white,
                   fontFamily: 'Poppins',
                   fontWeight: FontWeight.w400,
