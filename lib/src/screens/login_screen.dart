@@ -49,98 +49,105 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
             ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    IconButton(
-                      onPressed: () {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const WelcomeScreen(),
-                          ),
-                        );
-                      },
-                      icon: const Icon(
-                        Icons.arrow_back,
-                        color: AppColors.AccentColor, // Set icon color to orange
-                      ),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
+            SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Row(
                     children: [
-                      const Text(
-                        "Welcome Coders!",
-                        style: TextStyle(fontSize: 24.0, color: Colors.black),
-                        textAlign: TextAlign.left,
-                      ),
-                      const SizedBox(height: 16.0),
-                      TextFormField(
-                        controller: _usernameController,
-                        decoration: const InputDecoration(
-                          labelText: 'Team Name',
-                          prefixIcon: Icon(
-                            CupertinoIcons.person,
-                            color: AppColors.AccentColor, // Set icon color to orange
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 16.0),
-                      TextFormField(
-                        controller: _passwordController,
-                        decoration: InputDecoration(
-                          labelText: 'Password',
-                          prefixIcon: const Icon(
-                            CupertinoIcons.lock,
-                            color: AppColors.AccentColor, // Set icon color to orange
-                          ),
-                          suffixIcon: IconButton(
-                            icon: Icon(
-                              _obscureText
-                                  ? CupertinoIcons.eye
-                                  : CupertinoIcons.eye_slash,
-                              color: AppColors.AccentColor, // Set icon color to orange
+                      IconButton(
+                        onPressed: () {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const WelcomeScreen(),
                             ),
-                            onPressed: _togglePasswordVisibility,
-                          ),
+                          );
+                        },
+                        icon: const Icon(
+                          Icons.arrow_back,
+                          color:
+                              AppColors.AccentColor, // Set icon color to orange
                         ),
-                        obscureText: _obscureText,
-                      ),
-                      const SizedBox(height: 168.0),
-                      Column(
-                        children: [
-                          CustomButton(
-                            text: 'LOGIN',
-                            onPressed: () {
-                              // Navigate to verified screen
-                              Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const VerifiedScreen(),
-                                ),
-                              );
-                            },
-                          ),
-                          const SizedBox(
-                            height: 24,
-                          ),
-                          const Text(
-                            "<Remember to follow the owl>",
-                            style: TextStyle(color: Colors.black),
-                          ),
-                        ],
                       ),
                     ],
                   ),
-                ),
-              ],
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          "Welcome Coders!",
+                          style: TextStyle(fontSize: 24.0, color: Colors.black),
+                          textAlign: TextAlign.left,
+                        ),
+                        const SizedBox(height: 16.0),
+                        TextFormField(
+                          controller: _usernameController,
+                          decoration: const InputDecoration(
+                            labelText: 'Team Name',
+                            prefixIcon: Icon(
+                              CupertinoIcons.person,
+                              color: AppColors
+                                  .AccentColor, // Set icon color to orange
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 16.0),
+                        TextFormField(
+                          controller: _passwordController,
+                          decoration: InputDecoration(
+                            labelText: 'Password',
+                            prefixIcon: const Icon(
+                              CupertinoIcons.lock,
+                              color: AppColors
+                                  .AccentColor, // Set icon color to orange
+                            ),
+                            suffixIcon: IconButton(
+                              icon: Icon(
+                                _obscureText
+                                    ? CupertinoIcons.eye
+                                    : CupertinoIcons.eye_slash,
+                                color: AppColors
+                                    .AccentColor, // Set icon color to orange
+                              ),
+                              onPressed: _togglePasswordVisibility,
+                            ),
+                          ),
+                          obscureText: _obscureText,
+                        ),
+                        const SizedBox(height: 168.0),
+                        Column(
+                          children: [
+                            CustomButton(
+                              text: 'LOGIN',
+                              onPressed: () {
+                                // Navigate to verified screen
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        const VerifiedScreen(),
+                                  ),
+                                );
+                              },
+                            ),
+                            const SizedBox(
+                              height: 24,
+                            ),
+                            const Text(
+                              "<Remember to follow the owl>",
+                              style: TextStyle(color: Colors.black),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
