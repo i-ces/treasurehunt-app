@@ -10,27 +10,25 @@ class HomePage extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Stack(
-                children: [
-                  SizedBox(
-                    width: width,
-                    child: SvgPicture.asset(
-                      'assets/images/home-bg.svg',
-                      fit: BoxFit.cover,
-                    ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Stack(
+              children: [
+                SizedBox(
+                  width: width,
+                  child: SvgPicture.asset(
+                    'assets/images/home-bg.svg',
+                    fit: BoxFit.cover,
                   ),
-                  FloatingBar(
-                    name: 'The Road to Mr. Umi',
-                    onBackPressed: () {},
-                  ),
-                ],
-              ),
-            ],
-          ),
+                ),
+                FloatingBar(
+                  name: 'The Road to Mr. Umi',
+                  onBackPressed: () {},
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );
