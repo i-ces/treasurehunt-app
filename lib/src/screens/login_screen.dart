@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:treasurehunt/src/screens/verified_screen.dart';
-import 'package:treasurehunt/src/screens/welcome_screen.dart';
+import 'package:treasurehunt/src/screens/home_screen.dart';
 import 'package:treasurehunt/src/utils/colors.dart';
 import 'package:treasurehunt/src/widgets/custom_button.dart';
 
@@ -33,43 +32,45 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Stack(
-          children: [
-            Positioned(
-              top: 230,
-              right: -20,
-              child: Transform.rotate(
-                angle: -45 * 3.1415927 / 180, // Rotate -45 degrees
-                child: SvgPicture.asset(
-                  'assets/logo.svg',
-                  width: 150,
-                  height: 150,
-                ),
+    return Scaffold(
+      body: Stack(
+        children: [
+          Positioned(
+            top: 230,
+            right: -20,
+            child: Transform.rotate(
+              angle: -45 * 3.1415927 / 180, // Rotate -45 degrees
+              child: SvgPicture.asset(
+                'assets/logo.svg',
+                width: 150,
+                height: 150,
               ),
             ),
-            Column(
+          ),
+          SingleChildScrollView(
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Row(
-                  children: [
-                    IconButton(
-                      onPressed: () {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const WelcomeScreen(),
-                          ),
-                        );
-                      },
-                      icon: const Icon(
-                        Icons.arrow_back,
-                        color: AppColors.AccentColor, // Set icon color to orange
-                      ),
-                    ),
-                  ],
-                ),
+                const SizedBox(height: 30),
+                // Row(
+                //   children: [
+                //     IconButton(
+                //       onPressed: () {
+                //         Navigator.pushReplacement(
+                //           context,
+                //           MaterialPageRoute(
+                //             builder: (context) => const WelcomeScreen(),
+                //           ),
+                //         );
+                //       },
+                //       icon: const Icon(
+                //         Icons.arrow_back,
+                //         color:
+                //             AppColors.AccentColor, // Set icon color to orange
+                //       ),
+                //     ),
+                //   ],
+                // ),
                 Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Column(
@@ -88,7 +89,8 @@ class _LoginPageState extends State<LoginPage> {
                           labelText: 'Team Name',
                           prefixIcon: Icon(
                             CupertinoIcons.person,
-                            color: AppColors.AccentColor, // Set icon color to orange
+                            color: AppColors
+                                .AccentColor, // Set icon color to orange
                           ),
                         ),
                       ),
@@ -99,14 +101,16 @@ class _LoginPageState extends State<LoginPage> {
                           labelText: 'Password',
                           prefixIcon: const Icon(
                             CupertinoIcons.lock,
-                            color: AppColors.AccentColor, // Set icon color to orange
+                            color: AppColors
+                                .AccentColor, // Set icon color to orange
                           ),
                           suffixIcon: IconButton(
                             icon: Icon(
                               _obscureText
                                   ? CupertinoIcons.eye
                                   : CupertinoIcons.eye_slash,
-                              color: AppColors.AccentColor, // Set icon color to orange
+                              color: AppColors
+                                  .AccentColor, // Set icon color to orange
                             ),
                             onPressed: _togglePasswordVisibility,
                           ),
@@ -123,7 +127,7 @@ class _LoginPageState extends State<LoginPage> {
                               Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => const VerifiedScreen(),
+                                  builder: (context) => const HomeScreen(),
                                 ),
                               );
                             },
@@ -142,8 +146,8 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
