@@ -4,14 +4,14 @@ import 'package:flutter_svg/svg.dart';
 import 'package:treasurehunt/src/utils/colors.dart';
 
 class Accordion extends StatefulWidget {
-  final String sponsorType;
+  // final String sponsorType;
   final String sponsorName;
   final String sponsorImage;
   final String sponsorDescription;
 
   const Accordion({
     super.key,
-    required this.sponsorType,
+    // required this.sponsorType,
     required this.sponsorName,
     required this.sponsorImage,
     required this.sponsorDescription,
@@ -92,11 +92,14 @@ class _AccordionState extends State<Accordion>
                       // Ensures square shape and clipped corners
                       borderRadius: BorderRadius.circular(12.0),
                       child: widget.sponsorImage.isNotEmpty
-                          ? Image.asset(
-                              widget.sponsorImage,
-                              width: 100,
-                              height: 100,
-                              fit: BoxFit.cover,
+                          ? Container(
+                              color: Colors.white,
+                              child: Image.asset(
+                                widget.sponsorImage,
+                                width: 100,
+                                height: 100,
+                                fit: BoxFit.contain,
+                              ),
                             )
                           : SvgPicture.asset(
                               width: 100,
@@ -111,22 +114,25 @@ class _AccordionState extends State<Accordion>
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          AutoSizeText(
-                            widget.sponsorName,
-                            style: const TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                            ),
-                            maxLines: 2,
-                          ),
-                          Text(
-                            widget.sponsorType,
-                            style: const TextStyle(
-                              fontSize: 16,
-                              color: Colors.white,
+                          FittedBox(
+                            child: AutoSizeText(
+                              widget.sponsorName,
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                              ),
+                              maxLines: 3,
                             ),
                           ),
+                          // Text(
+                          //   widget.sponsorType,
+                          //   style: const TextStyle(
+                          //     fontSize: 16,
+                          //     color: Colors.white,
+                          //   ),
+                          // ),
                         ],
                       ),
                     ),

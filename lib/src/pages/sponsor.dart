@@ -13,6 +13,7 @@ class SponsorsPage extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
+          const SizedBox(height: 15),
           FloatingBar(
             name: "Get to know our sponsors!",
             onBackPressed: () {},
@@ -25,7 +26,6 @@ class SponsorsPage extends StatelessWidget {
                 return Container(
                   margin: const EdgeInsets.only(bottom: 16.0),
                   child: Accordion(
-                    sponsorType: sponsors[index]['type']!,
                     sponsorName: sponsors[index]['name']!,
                     sponsorImage: sponsors[index]['image']!,
                     sponsorDescription: sponsors[index]['description']!,
