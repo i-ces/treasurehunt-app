@@ -1,16 +1,21 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+
 class Accordion extends StatefulWidget {
-  final String title;
-  final String content;
-  final String? image;
+
+  final String sponsorType;
+  final String sponsorName;
+  final String sponsorImage;
+  final String sponsorDescription;
 
   const Accordion({
     super.key,
-    this.image,
-    required this.title,
-    required this.content,
+    required this.sponsorType,
+    required this.sponsorName,
+    required this.sponsorImage,
+    required this.sponsorDescription,
   });
 
   @override
@@ -85,11 +90,9 @@ class _AccordionState extends State<Accordion>
                     ClipRRect(
                       // Ensures square shape and clipped corners
                       borderRadius: BorderRadius.circular(12.0),
-                      child: widget.image != null && widget.image!.isNotEmpty
-                          ? FadeInImage.assetNetwork(
+                      child: widget.sponsorImage.isNotEmpty
+                          ? Image.asset(widget.sponsorImage,
                               width: 120,
-                              placeholder: 'assets/placeholder.png',
-                              image: widget.image!,
                               fit: BoxFit.cover,
                             )
                           : SvgPicture.asset(
@@ -99,13 +102,27 @@ class _AccordionState extends State<Accordion>
                             ),
                     ),
                     const SizedBox(width: 10),
-                    Text(
-                      widget.title,
-                      style: const TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
+                    Center(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          AutoSizeText(
+                            widget.sponsorName,
+                            style: const TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                            maxLines: 2,
+                            
+                          ),
+                          Text(widget.sponsorType,
+                        style: const TextStyle(
+                          fontSize: 16,
+                          color: Colors.white,
+                        ),),
+                                        ],),
                     ),
                   ],
                 ),
@@ -138,7 +155,7 @@ class _AccordionState extends State<Accordion>
                   padding:
                       const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   child: Text(
-                    widget.content,
+                    widget.sponsorDescription,
                     style: const TextStyle(fontSize: 16),
                   ),
                 ),

@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:treasurehunt/src/screens/home_screen.dart';
+import 'package:treasurehunt/src/screens/verified_screen.dart';
 import 'package:treasurehunt/src/screens/welcome_screen.dart';
 import 'package:treasurehunt/src/utils/colors.dart';
 import 'package:treasurehunt/src/widgets/custom_button.dart';
@@ -123,7 +123,7 @@ class _LoginPageState extends State<LoginPage> {
                               Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => const HomeScreen(),
+                                  builder: (context) => const VerifiedScreen(),
                                 ),
                               );
                             },
@@ -132,7 +132,7 @@ class _LoginPageState extends State<LoginPage> {
                             height: 24,
                           ),
                           const Text(
-                            "<Remember to follow the owl",
+                            "<Remember to follow the owl>",
                             style: TextStyle(color: Colors.black),
                           ),
                         ],

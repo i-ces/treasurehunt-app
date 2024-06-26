@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 
-class Dallo extends StatelessWidget {
+class FloatingBar extends StatelessWidget {
   final String name;
   final bool showBackButton;
+  final void Function() onBackPressed;
 
-  const Dallo({
+  const FloatingBar({
     required this.name,
     this.showBackButton = false,
+    required this.onBackPressed,
     super.key,
   });
 
@@ -22,7 +24,11 @@ class Dallo extends StatelessWidget {
         child: Row(
           children: [
             if (showBackButton)
-              IconButton(icon: const Icon(Icons.arrow_back), onPressed: () => {}
+              IconButton(
+                  icon: const Icon(Icons.arrow_back),
+                  onPressed: () => {
+                        onBackPressed(),
+                      }
                   // Navigator.of(context).pop(),
                   ),
             Expanded(
