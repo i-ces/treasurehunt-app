@@ -39,52 +39,33 @@ class CustomRiddleCard extends StatelessWidget {
           ),
         ],
       ),
-      child: InkWell(
-        onTap: () async {
-          try {
-            final response = await RiddleHandler.userLevel();
-            print('response: $response');
-          } catch (e) {
-            print('error: $e');
-          }
-          // Navigator.push(
-          //   context,
-          //   MaterialPageRoute(
-          //     builder: (context) => RiddleDetailPage(
-          //       riddleTitle: riddle,
-          //       riddleNumber: id,
-          //     ),
-          //   ),
-          // );
-        },
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              if (!isCompleted) ...[
-                Icon(
-                  isUnlocked
-                      ? CupertinoIcons.lock_open_fill
-                      : CupertinoIcons.lock_fill,
-                  color: isCompleted || isUnlocked
-                      ? Colors.white
-                      : AppColors.TextColor1.withOpacity(0.6),
-                ),
-                const SizedBox(width: 50),
-              ],
-              Text(
-                riddle,
-                style: TextStyle(
-                  fontSize: 20,
-                  color: isCompleted || isUnlocked
-                      ? Colors.white
-                      : AppColors.TextColor1.withOpacity(0.6),
-                  fontWeight: FontWeight.w500,
-                ),
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            if (!isCompleted) ...[
+              Icon(
+                isUnlocked
+                    ? CupertinoIcons.lock_open_fill
+                    : CupertinoIcons.lock_fill,
+                color: isCompleted || isUnlocked
+                    ? Colors.white
+                    : AppColors.TextColor1.withOpacity(0.6),
               ),
+              const SizedBox(width: 50),
             ],
-          ),
+            Text(
+              riddle,
+              style: TextStyle(
+                fontSize: 20,
+                color: isCompleted || isUnlocked
+                    ? Colors.white
+                    : AppColors.TextColor1.withOpacity(0.6),
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ],
         ),
       ),
     );

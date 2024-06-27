@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:treasurehunt/src/models/level.dart';
+import 'package:treasurehunt/src/screens/level_detail_page.dart';
 
 import 'package:treasurehunt/src/widgets/custom_app_bar.dart';
 import 'package:treasurehunt/src/widgets/custom_riddle_card.dart';
@@ -24,11 +26,22 @@ class LevelPage extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           itemCount: riddles.length,
           itemBuilder: (context, index) {
-            return CustomRiddleCard(
-              riddle: riddles[index],
-              id: index + 1,
-              isCompleted: index == 0,
-              isUnlocked: index == 1,
+            return InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => LevelDetailPage(
+                        levelTitle: "riddleTitle", levelNumber: index + 1),
+                  ),
+                );
+              },
+              child: CustomRiddleCard(
+                riddle: riddles[index],
+                id: index + 1,
+                isCompleted: index == 0,
+                isUnlocked: index == 1,
+              ),
             );
             // return CustomRiddleCard(
             //     riddle: riddles[index], id: index + 1, isCompleted: index == 0);

@@ -33,11 +33,12 @@ class FloatingBar extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             if (showBackButton)
-              IconButton(
-                  icon: const Icon(Icons.arrow_back), onPressed: onBackPressed
-
+              GestureDetector(
+                  onTap: () => Navigator.pop(context),
+                  child: const Icon(Icons.arrow_back, size: 30)
                   // Navigator.of(context).pop(),
                   ),
             if (contestant)

@@ -2,30 +2,34 @@ import 'package:flutter/material.dart';
 import 'package:treasurehunt/src/screens/levels.dart';
 import 'package:treasurehunt/src/utils/colors.dart';
 import 'package:treasurehunt/src/widgets/custom_app_bar.dart';
-import 'package:treasurehunt/src/widgets/floating_bar.dart';
-import 'package:treasurehunt/src/widgets/nav_bar.dart';
 
-class RiddleDetailPage extends StatelessWidget {
-  final String riddleTitle;
-  final int riddleNumber;
+class LevelDetailPage extends StatelessWidget {
+  final String levelTitle;
+  final int levelNumber;
 
-  const RiddleDetailPage(
-      {super.key, required this.riddleTitle, required this.riddleNumber});
+  const LevelDetailPage(
+      {super.key, required this.levelTitle, required this.levelNumber});
 
   Future<String> fetchRiddleDescription() async {
     // Simulate API call
     await Future.delayed(const Duration(seconds: 2));
-    return 'Description for $riddleTitle from API'; // Replace with actual API call
+    return 'Description for $levelTitle from API'; // Replace with actual API call
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(appBarHeight: 200, name: 'Riddle $riddleNumber', showDallo: true, showBackButtonInDallo: true, onBackPressedInDallo: () => Navigator.of(context).pop(),),
+      appBar: CustomAppBar(
+        appBarHeight: 200,
+        name: 'Level $levelNumber',
+        showDallo: true,
+        showBackButtonInDallo: true,
+        onBackPressedInDallo: () => Navigator.of(context).pop(),
+      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          const SizedBox(height: 16),
+          const SizedBox(height: 20),
           Expanded(
             // child:
             //  FutureBuilder<String>(
@@ -56,9 +60,9 @@ class RiddleDetailPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(height: 20),
-                  Align(
+                  const Align(
                     alignment: Alignment.topLeft,
-                    child: const Text(
+                    child: Text(
                       "The Number’s Dilemma",
                       style:
                           TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
@@ -117,22 +121,6 @@ class RiddleDetailPage extends StatelessWidget {
             ),
           ),
         ],
-      ),
-      bottomNavigationBar: StatefulBuilder(
-        builder: (BuildContext context, StateSetter setState) {
-          int selectedIndex = 2;
-
-          void onItemTapped(int index) {
-            setState(() {
-              selectedIndex = index;
-            });
-          }
-
-          return NavBar(
-            onItemSelected: onItemTapped,
-            selectedIndex: selectedIndex,
-          );
-        },
       ),
     );
   }
