@@ -4,10 +4,12 @@ import 'package:treasurehunt/src/utils/colors.dart';
 class CustomButton extends StatelessWidget {
   final String text;
   final VoidCallback onPressed;
+  final Widget? widget;
 
   const CustomButton({
     required this.text,
     required this.onPressed,
+    this.widget,
     super.key,
   });
 
@@ -25,16 +27,18 @@ class CustomButton extends StatelessWidget {
           ),
           padding: const EdgeInsets.symmetric(horizontal: 45, vertical: 13),
         ),
-        child: Text(
-          text.toUpperCase(),
-          style: const TextStyle(
-            letterSpacing: 1.2,
-            color: Colors.white,
-            fontFamily: 'Roboto',
-            fontSize: 18,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
+        child: widget != null
+            ? widget
+            : Text(
+                text.toUpperCase(),
+                style: const TextStyle(
+                  letterSpacing: 1.2,
+                  color: Colors.white,
+                  fontFamily: 'Roboto',
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
       ),
     );
   }
