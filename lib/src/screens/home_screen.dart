@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:treasurehunt/src/pages/home_page.dart';
 import 'package:treasurehunt/src/pages/leaderboard_page.dart';
-import 'package:treasurehunt/src/pages/level.dart';
+import 'package:treasurehunt/src/pages/level_page.dart';
 import 'package:treasurehunt/src/pages/sponsor.dart';
 import 'package:treasurehunt/src/utils/services/token_service.dart';
 import 'package:treasurehunt/src/widgets/nav_bar.dart';
