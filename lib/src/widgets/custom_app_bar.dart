@@ -69,7 +69,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
         if (showDallo)
           Positioned(
-            bottom: -20,
+            bottom: -25,
             child: DalloContainer(
                 name: name,
                 showBackButtonInDallo: showBackButtonInDallo,

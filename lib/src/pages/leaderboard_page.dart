@@ -18,13 +18,14 @@ class LeaderboardPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(appBarHeight: 200, name: '', showDallo: false),
+      appBar: const CustomAppBar(
+          appBarHeight: 200, name: 'Leaderboard', showDallo: true),
       body: Column(
         children: [
           Expanded(
             child: SingleChildScrollView(
               child: Padding(
-                padding: const EdgeInsets.only(bottom: 12),
+                padding: const EdgeInsets.only(bottom: 12, top: 20),
                 child: Column(
                   children: [
                     const Padding(
