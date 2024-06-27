@@ -47,7 +47,7 @@ class _LoginPageState extends State<LoginPage> {
       await Future.delayed(Duration(seconds: 2));
       // final token = await AuthHandler.login(
       //     _usernameController.text, _passwordController.text);
-      final token = "sdk";
+      final token = "f2cb29b341f83361a5d4014f123dee8e1758f7b1";
 
       await storeBearerToken(token);
       final saved_token = await getBearerToken();

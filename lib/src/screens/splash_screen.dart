@@ -37,12 +37,18 @@ class _InverseSplashScreenState extends State<InverseSplashScreen> {
 
     // Check if user is already logged in
     getBearerToken().then((token) async {
+      print("Token: $token ");
       if (token != null || token!.isNotEmpty) {
         // Check the user level
 
         await Future.delayed(const Duration(milliseconds: 2300), () async {
-          final userLevel = await RiddleHandler.userLevel();
-          storeUserLevel(userLevel);
+          // try {
+          //   final userLevel = await RiddleHandler.userLevel();
+          //   storeUserLevel(userLevel);
+          // } catch (e) {
+          //   print(e);
+          // }
+
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(builder: (context) => const HomeScreen()),
