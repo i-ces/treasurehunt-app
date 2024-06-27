@@ -44,23 +44,24 @@ class _LoginPageState extends State<LoginPage> {
       setState(() {
         isLoading = true;
       });
-      await Future.delayed(Duration(seconds: 2));
-      // final token = await AuthHandler.login(
-      //     _usernameController.text, _passwordController.text);
-      final token = "f2cb29b341f83361a5d4014f123dee8e1758f7b1";
+      await Future.delayed(const Duration(seconds: 2));
+      final authCred = await AuthHandler.login(
+          _usernameController.text, _passwordController.text);
 
-      await storeBearerToken(token);
-      final saved_token = await getBearerToken();
+      await storeAuthCred(authCred);
       setState(() {
         isLoading = false;
       });
-      print('saved_token: $saved_token');
+      // print('saved_token: $saved_token');
       // Go to homescreen
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => const HomeScreen()),
       );
     } catch (e) {
+      setState(() {
+        isLoading = false;
+      });
       showErrorToast('Failed to login');
     }
   }

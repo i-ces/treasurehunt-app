@@ -12,3 +12,8 @@ Level _$LevelFromJson(Map<String, dynamic> json) => Level(
           .map((e) => Riddle.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
+
+Map<String, dynamic> _$LevelToJson(Level instance) => <String, dynamic>{
+      'level_id': instance.level_id,
+      'riddles': instance.riddles.map((e) => e.toJson()).toList(),
+    };

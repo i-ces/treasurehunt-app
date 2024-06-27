@@ -1,7 +1,6 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:treasurehunt/src/handlers/riddle_handler.dart';
 import 'package:treasurehunt/src/screens/home_screen.dart';
 import 'package:treasurehunt/src/screens/welcome_screen.dart';
 import 'package:treasurehunt/src/utils/colors.dart';
@@ -36,19 +35,12 @@ class _InverseSplashScreenState extends State<InverseSplashScreen> {
     super.initState();
 
     // Check if user is already logged in
-    getBearerToken().then((token) async {
-      print("Token: $token ");
-      if (token != null || token!.isNotEmpty) {
-        // Check the user level
-
+    getAuthCred().then((token) async {
+      if (token.client.isNotEmpty &&
+          token.token.isNotEmpty &&
+          token.uid.isNotEmpty) {
+        // Go to homescreen
         await Future.delayed(const Duration(milliseconds: 2300), () async {
-          // try {
-          //   final userLevel = await RiddleHandler.userLevel();
-          //   storeUserLevel(userLevel);
-          // } catch (e) {
-          //   print(e);
-          // }
-
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(builder: (context) => const HomeScreen()),

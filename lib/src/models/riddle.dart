@@ -16,4 +16,6 @@ class Riddle {
 
   factory Riddle.fromJson(final Map<String, dynamic> json) =>
       _$RiddleFromJson(json);
+
+  toJson() {}
 }

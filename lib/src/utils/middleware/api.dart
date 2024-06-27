@@ -6,14 +6,16 @@ import 'package:treasurehunt/src/utils/services/token_service.dart';
 
 class ApiMiddleware {
   static Future<http.Response> get(String path) async {
-    final token = await getBearerToken();
+    final token = await getAuthCred();
     final url = Uri.parse('$API_URL$path');
     final response = await http.get(
       url,
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
-        'Authorization': 'Token $token',
+        'access-token': token.token,
+        'client': token.client,
+        'uid': token.uid,
       },
     );
     return response;
@@ -21,10 +23,15 @@ class ApiMiddleware {
 
   Future<http.Response> post(String path, Map<String, dynamic> data) async {
     final url = Uri.parse('$API_URL$path');
+    final token = await getAuthCred();
     final response = await http.post(
       url,
       headers: {
         'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'access-token': token.token,
+        'client': token.client,
+        'uid': token.uid,
       },
       body: jsonEncode(data),
     );
