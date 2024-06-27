@@ -1,5 +1,4 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:treasurehunt/src/models/riddle.dart';
 
 part 'level.g.dart';
 

@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:treasurehunt/src/models/level.dart';
+import 'package:treasurehunt/src/handlers/level_handler.dart';
 import 'package:treasurehunt/src/screens/level_detail_page.dart';
 
 import 'package:treasurehunt/src/widgets/custom_app_bar.dart';
 import 'package:treasurehunt/src/widgets/custom_riddle_card.dart';
 
-class LevelPage extends StatelessWidget {
-  final List<String> riddles =
-      List.generate(9, (index) => 'Level #0${index + 1}');
-
+class LevelPage extends StatefulWidget {
   LevelPage({this.level = 0, super.key});
   final int level;
+
+  @override
+  State<LevelPage> createState() => _LevelPageState();
+}
+
+class _LevelPageState extends State<LevelPage> {
+  final List<String> riddles =
+      List.generate(9, (index) => 'Level #0${index + 1}');
 
   @override
   Widget build(BuildContext context) {
@@ -21,32 +26,45 @@ class LevelPage extends StatelessWidget {
         showDallo: true,
       ),
       body: Padding(
-        padding: const EdgeInsets.only(top: 20),
-        child: ListView.builder(
-          padding: const EdgeInsets.all(8.0),
-          itemCount: riddles.length,
-          itemBuilder: (context, index) {
-            return InkWell(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => LevelDetailPage(
-                        levelTitle: "riddleTitle", levelNumber: index + 1),
-                  ),
+        padding: const EdgeInsets.all(20),
+        child: FutureBuilder(
+            future: LevelHandler.getAllLevels(),
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                return ListView.builder(
+                  padding: const EdgeInsets.all(8.0),
+                  itemCount: snapshot.data!.length,
+                  itemBuilder: (context, index) {
+                    return InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => LevelDetailPage(
+                                levelTitle: "riddleTitle",
+                                levelNumber: index + 1),
+                          ),
+                        );
+                      },
+                      child: CustomRiddleCard(
+                        riddle: snapshot.data![index].title,
+                        id: snapshot.data![index].level_int,
+                        isCompleted: index == 0,
+                        isUnlocked: index == 1,
+                      ),
+                    );
+                  },
                 );
-              },
-              child: CustomRiddleCard(
-                riddle: riddles[index],
-                id: index + 1,
-                isCompleted: index == 0,
-                isUnlocked: index == 1,
-              ),
-            );
-            // return CustomRiddleCard(
-            //     riddle: riddles[index], id: index + 1, isCompleted: index == 0);
-          },
-        ),
+              } else if (snapshot.hasError) {
+                return Center(
+                    child: Text("Failed to fetch levels",
+                        style: const TextStyle(
+                          fontSize: 20,
+                          color: Colors.red,
+                        )));
+              }
+              return const Center(child: CircularProgressIndicator());
+            }),
       ),
     );
   }
