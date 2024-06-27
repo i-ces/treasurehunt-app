@@ -1,8 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:treasurehunt/src/handlers/auth_handler.dart';
 import 'package:treasurehunt/src/screens/home_screen.dart';
 import 'package:treasurehunt/src/utils/colors.dart';
+import 'package:treasurehunt/src/utils/helper_functions.dart';
+import 'package:treasurehunt/src/utils/services/token_service.dart';
 import 'package:treasurehunt/src/widgets/custom_button.dart';
 
 class LoginPage extends StatefulWidget {
@@ -28,6 +31,27 @@ class _LoginPageState extends State<LoginPage> {
     setState(() {
       _obscureText = !_obscureText;
     });
+  }
+
+  Future<void> login() async {
+    if (_usernameController.text.length < 4 ||
+        _passwordController.text.length < 4) {
+      return;
+    }
+    try {
+      final token = await AuthHandler.login(
+          _usernameController.text, _passwordController.text);
+      await storeBearerToken(token);
+      final saved_token = await getBearerToken();
+      print('saved_token: $saved_token');
+      // Go to homescreen
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const HomeScreen()),
+      );
+    } catch (e) {
+      showErrorToast('Failed to login');
+    }
   }
 
   @override
@@ -123,13 +147,14 @@ class _LoginPageState extends State<LoginPage> {
                           CustomButton(
                             text: 'LOGIN',
                             onPressed: () {
+                              login();
                               // Navigate to verified screen
-                              Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const HomeScreen(),
-                                ),
-                              );
+                              // Navigator.pushReplacement(
+                              //   context,
+                              //   MaterialPageRoute(
+                              //     builder: (context) => const HomeScreen(),
+                              //   ),
+                              // );
                             },
                           ),
                           const SizedBox(

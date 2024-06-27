@@ -1,8 +1,11 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:treasurehunt/src/handlers/riddle_handler.dart';
+import 'package:treasurehunt/src/screens/home_screen.dart';
 import 'package:treasurehunt/src/screens/welcome_screen.dart';
 import 'package:treasurehunt/src/utils/colors.dart';
+import 'package:treasurehunt/src/utils/services/token_service.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -20,8 +23,34 @@ class SplashScreen extends StatelessWidget {
   }
 }
 
-class InverseSplashScreen extends StatelessWidget {
+class InverseSplashScreen extends StatefulWidget {
   const InverseSplashScreen({super.key});
+
+  @override
+  State<InverseSplashScreen> createState() => _InverseSplashScreenState();
+}
+
+class _InverseSplashScreenState extends State<InverseSplashScreen> {
+  @override
+  void initState() {
+    super.initState();
+
+    // Check if user is already logged in
+    getBearerToken().then((token) async {
+      if (token != null || token!.isNotEmpty) {
+        // Check the user level
+
+        await Future.delayed(const Duration(milliseconds: 2300), () async {
+          final userLevel = await RiddleHandler.userLevel();
+          storeUserLevel(userLevel);
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => const HomeScreen()),
+          );
+        });
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {

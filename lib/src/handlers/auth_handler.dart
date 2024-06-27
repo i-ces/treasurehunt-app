@@ -4,9 +4,9 @@ import "dart:convert";
 import "package:treasurehunt/src/constants.dart";
 
 class AuthHandler {
-  Future<String> login(String username, String password) async {
+  static Future<String> login(String username, String password) async {
     final response = await http.post(
-      Uri.parse('$API_URL/token'),
+      Uri.parse('$API_URL/login/'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
