@@ -79,10 +79,12 @@ class LevelDetailPage extends StatelessWidget {
                               itemBuilder: (context, index) {
                                 return GestureDetector(
                                   onTap: () {
-                                    Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                RiddlePage(levelNumber)));
+                                    Navigator.of(context)
+                                        .push(MaterialPageRoute(
+                                            builder: (context) => RiddlePage(
+                                                  levelNumber,
+                                                  snapshot.data![index].id,
+                                                )));
                                   },
                                   child: Container(
                                     margin: const EdgeInsets.only(bottom: 20),

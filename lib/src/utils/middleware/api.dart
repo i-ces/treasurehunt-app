@@ -23,7 +23,8 @@ class ApiMiddleware {
     return response;
   }
 
-  Future<http.Response> post(String path, Map<String, dynamic> data) async {
+  static Future<http.Response> post(
+      String path, Map<String, dynamic> data) async {
     final url = Uri.parse('$API_URL$path');
     final token = await getAuthCred();
     final response = await http.post(

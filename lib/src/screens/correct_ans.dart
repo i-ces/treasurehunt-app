@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:treasurehunt/src/screens/home_screen.dart';
 import 'package:treasurehunt/src/utils/colors.dart';
 import 'package:treasurehunt/src/widgets/custom_app_bar.dart';
 import 'package:treasurehunt/src/widgets/custom_button.dart';
@@ -68,31 +69,40 @@ class _CorrectAnsState extends State<CorrectAns> {
           ),
           Padding(
             padding: const EdgeInsets.all(20.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Image.asset(imagePath),
-                const SizedBox(height: 30),
-                Text(
-                  text,
-                  style: const TextStyle(
-                    fontSize: 28,
-                    color: AppColors.MainColor,
-                    fontWeight: FontWeight.bold,
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(imagePath),
+                  const SizedBox(height: 30),
+                  Text(
+                    text,
+                    style: const TextStyle(
+                      fontSize: 28,
+                      color: AppColors.MainColor,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
-                const SizedBox(height: 12),
-                Text(
-                  subtext,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    fontSize: 18,
-                    color: Color.fromARGB(255, 89, 118, 167),
+                  const SizedBox(height: 12),
+                  Text(
+                    subtext,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                      fontSize: 18,
+                      color: Color.fromARGB(255, 89, 118, 167),
+                    ),
                   ),
-                ),
-                const SizedBox(height: 30),
-                CustomButton(text: 'Next', onPressed: () {}),
-              ],
+                  const SizedBox(height: 30),
+                  CustomButton(
+                      text: 'Next',
+                      onPressed: () {
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const HomeScreen()));
+                      }),
+                ],
+              ),
             ),
           ),
         ],

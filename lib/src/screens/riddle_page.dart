@@ -1,54 +1,72 @@
 import 'package:flutter/material.dart';
 import 'package:treasurehunt/src/handlers/riddle_handler.dart';
 import 'package:treasurehunt/src/models/riddle.dart';
+import 'package:treasurehunt/src/screens/correct_ans.dart';
 import 'package:treasurehunt/src/utils/colors.dart';
 import 'package:treasurehunt/src/widgets/custom_app_bar.dart';
 import 'package:treasurehunt/src/widgets/custom_button.dart';
 
 class RiddlePage extends StatefulWidget {
-  const RiddlePage(this.level, {super.key});
+  const RiddlePage(this.level, this.riddle, {super.key});
   final int level;
+  final int riddle;
 
   @override
   State<RiddlePage> createState() => _RiddlePageState();
 }
 
 class _RiddlePageState extends State<RiddlePage> {
-  late Future<Riddle> futureRiddle;
+  final TextEditingController _controller = TextEditingController();
 
-  @override
-  void initState() {
-    super.initState();
-    futureRiddle =
-        RiddleHandler().getRiddle(1, 1); // Example level and riddle IDs
+  void submitAnswer(String answer) async {
+    try {
+      final status = await RiddleHandler.checkAnswer(answer, widget.riddle);
+      if (status == 'correct') {
+        Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    CorrectAns(status: Status.congratulations)));
+      } else if (status == 'incorrect') {
+        Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+                builder: (context) => CorrectAns(status: Status.ohno)));
+      } else {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => CorrectAns(status: Status.ohno)));
+      }
+    } catch (e) {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => CorrectAns(status: Status.ohno)));
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: CustomAppBar(
-        showDallo: true,
-        showBackButtonInDallo: true,
-        name: 'Level ${widget.level}',
-      ),
-      body: FutureBuilder<Riddle>(
-        future: futureRiddle,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator());
-          } else if (snapshot.hasError) {
-            return const Center(child: Text('Error loading riddle'));
-          } else if (!snapshot.hasData) {
-            return const Center(child: Text('No riddle found'));
-          } else {
-            final riddle = snapshot.data!;
-            return Scaffold(
-              appBar: CustomAppBar(
-                showDallo: true,
-                showBackButtonInDallo: true,
-                name: 'Riddle-${riddle.id}',
-              ),
-              body: Padding(
+    return GestureDetector(
+      child: Scaffold(
+        appBar: CustomAppBar(
+          showDallo: true,
+          showBackButtonInDallo: true,
+          name: 'Level ${widget.level}',
+        ),
+        body: FutureBuilder<Riddle>(
+          future: RiddleHandler.getRiddle(widget.level, widget.riddle),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(child: CircularProgressIndicator());
+            } else if (snapshot.hasError) {
+              return const Center(child: Text('Error loading riddle'));
+            } else if (!snapshot.hasData) {
+              return const Center(child: Text('No riddle found'));
+            } else {
+              final riddle = snapshot.data!;
+              return Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: SingleChildScrollView(
                   child: Column(
@@ -108,7 +126,7 @@ class _RiddlePageState extends State<RiddlePage> {
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 child: TextFormField(
-                                  // controller: _controller,
+                                  controller: _controller,
                                   maxLines: null, // Allow multiple lines
                                   decoration: InputDecoration(
                                     hintText: 'Write your answer.....',
@@ -133,15 +151,16 @@ class _RiddlePageState extends State<RiddlePage> {
                       ),
                       CustomButton(
                         text: 'Submit',
-                        onPressed: () {},
+                        onPressed: () =>
+                            submitAnswer(_controller.text.trim().toLowerCase()),
                       ),
                     ],
                   ),
                 ),
-              ),
-            );
-          }
-        },
+              );
+            }
+          },
+        ),
       ),
     );
   }
