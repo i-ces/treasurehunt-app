@@ -5,14 +5,14 @@ import 'package:treasurehunt/src/utils/colors.dart';
 import 'package:treasurehunt/src/widgets/custom_app_bar.dart';
 import 'package:treasurehunt/src/widgets/custom_button.dart';
 
-class LevelsPage extends StatefulWidget {
-  const LevelsPage({super.key});
+class RiddlePage extends StatefulWidget {
+  const RiddlePage({super.key});
 
   @override
-  State<LevelsPage> createState() => _LevelsPageState();
+  State<RiddlePage> createState() => _RiddlePageState();
 }
 
-class _LevelsPageState extends State<LevelsPage> {
+class _RiddlePageState extends State<RiddlePage> {
   late Future<Riddle> futureRiddle;
 
   @override
@@ -40,7 +40,7 @@ class _LevelsPageState extends State<LevelsPage> {
               appBar: CustomAppBar(
                 showDallo: true,
                 showBackButtonInDallo: true,
-                name: 'Riddle-${riddle.riddle_id}',
+                name: 'Riddle-${riddle.id}',
               ),
               body: Padding(
                 padding: const EdgeInsets.all(20.0),
@@ -51,7 +51,7 @@ class _LevelsPageState extends State<LevelsPage> {
                     children: [
                       const SizedBox(height: 20),
                       Text(
-                        "Riddle-${riddle.riddle_id}",
+                        "Riddle-${riddle.id}",
                         style: const TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.bold,

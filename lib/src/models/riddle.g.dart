@@ -7,13 +7,15 @@ part of 'riddle.dart';
 // **************************************************************************
 
 Riddle _$RiddleFromJson(Map<String, dynamic> json) => Riddle(
-      riddle_id: (json['riddle_id'] as num).toInt(),
+      id: (json['id'] as num).toInt(),
       question: json['question'] as String,
-      is_available: json['is_available'] as bool,
+      answer: json['answer'] as String,
+      isTrap: json['is_trap'] as bool,
     );
 
 Map<String, dynamic> _$RiddleToJson(Riddle instance) => <String, dynamic>{
-      'riddle_id': instance.riddle_id,
+      'id': instance.id,
       'question': instance.question,
-      'is_available': instance.is_available,
+      'answer': instance.answer,
+      'is_trap': instance.isTrap,
     };

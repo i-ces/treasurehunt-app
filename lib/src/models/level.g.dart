@@ -7,13 +7,13 @@ part of 'level.dart';
 // **************************************************************************
 
 Level _$LevelFromJson(Map<String, dynamic> json) => Level(
-      id: (json['id'] as num).toInt(),
-      level_int: (json['level_int'] as num).toInt(),
+      level: (json['level_int'] as num).toInt(),
       title: json['title'] as String,
+      status: json['status'] as String,
     );
 
 Map<String, dynamic> _$LevelToJson(Level instance) => <String, dynamic>{
-      'id': instance.id,
-      'level_int': instance.level_int,
+      'level_int': instance.level,
       'title': instance.title,
+      'status': instance.status,
     };

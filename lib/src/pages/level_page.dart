@@ -41,14 +41,14 @@ class _LevelPageState extends State<LevelPage> {
                           context,
                           MaterialPageRoute(
                             builder: (context) => LevelDetailPage(
-                                levelTitle: "riddleTitle",
-                                levelNumber: index + 1),
+                                levelTitle: snapshot.data![index].title,
+                                levelNumber: snapshot.data![index].level),
                           ),
                         );
                       },
                       child: CustomRiddleCard(
                         riddle: snapshot.data![index].title,
-                        id: snapshot.data![index].level_int,
+                        id: snapshot.data![index].level,
                         isCompleted: index == 0,
                         isUnlocked: index == 1,
                       ),

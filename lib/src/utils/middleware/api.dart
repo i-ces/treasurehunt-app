@@ -8,6 +8,7 @@ class ApiMiddleware {
   static Future<http.Response> get(String path) async {
     final token = await getAuthCred();
     final url = Uri.parse('$API_URL$path');
+
     final response = await http.get(
       url,
       headers: {
@@ -18,6 +19,7 @@ class ApiMiddleware {
         'uid': token.uid,
       },
     );
+
     return response;
   }
 

@@ -4,17 +4,19 @@ part 'level.g.dart';
 
 @JsonSerializable()
 class Level {
-  final int id;
-  final int level_int;
+  @JsonKey(name: 'level_int')
+  final int level;
   final String title;
+  final String status;
 
   Level({
-    required this.id,
-    required this.level_int,
+    required this.level,
     required this.title,
+    required this.status,
   });
 
   factory Level.fromJson(final Map<String, dynamic> json) =>
       _$LevelFromJson(json);
+
   Map<String, dynamic> toJson() => _$LevelToJson(this);
 }

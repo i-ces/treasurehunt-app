@@ -24,7 +24,7 @@ class TreasureHuntApp extends StatelessWidget {
         ),
         scaffoldBackgroundColor: Colors.white,
       ),
-      home: const SplashScreen(),
+      home: const LoginPage(),
     );
   }
 }

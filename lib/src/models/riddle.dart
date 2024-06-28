@@ -4,18 +4,22 @@ part 'riddle.g.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Riddle {
-  final int riddle_id;
+  final int id;
   final String question;
-  final bool is_available;
+  final String answer;
+
+  @JsonKey(name: 'is_trap')
+  final bool isTrap;
 
   Riddle({
-    required this.riddle_id,
+    required this.id,
     required this.question,
-    required this.is_available,
+    required this.answer,
+    required this.isTrap,
   });
 
   factory Riddle.fromJson(final Map<String, dynamic> json) =>
       _$RiddleFromJson(json);
 
-  toJson() {}
+  Map<String, dynamic> toJson() => _$RiddleToJson(this);
 }
