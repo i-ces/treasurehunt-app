@@ -82,7 +82,7 @@ class LevelDetailPage extends StatelessWidget {
                                     Navigator.of(context).push(
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                const RiddlePage()));
+                                                RiddlePage(levelNumber)));
                                   },
                                   child: Container(
                                     margin: const EdgeInsets.only(bottom: 20),

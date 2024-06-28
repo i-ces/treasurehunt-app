@@ -6,7 +6,8 @@ import 'package:treasurehunt/src/widgets/custom_app_bar.dart';
 import 'package:treasurehunt/src/widgets/custom_button.dart';
 
 class RiddlePage extends StatefulWidget {
-  const RiddlePage({super.key});
+  const RiddlePage(this.level, {super.key});
+  final int level;
 
   @override
   State<RiddlePage> createState() => _RiddlePageState();
@@ -25,6 +26,11 @@ class _RiddlePageState extends State<RiddlePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: CustomAppBar(
+        showDallo: true,
+        showBackButtonInDallo: true,
+        name: 'Level ${widget.level}',
+      ),
       body: FutureBuilder<Riddle>(
         future: futureRiddle,
         builder: (context, snapshot) {
