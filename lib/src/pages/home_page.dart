@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:treasurehunt/src/handlers/leaderboard_handler.dart';
 import 'package:treasurehunt/src/widgets/custom_app_bar.dart';
 
 enum Level { zero, one, two, three, four, five, six, seven, eight, nine, ten }
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({
     this.level = 0,
     super.key,
@@ -11,9 +12,28 @@ class HomePage extends StatelessWidget {
   final int level;
 
   @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int _level = 0;
+
+  fetch() async {
+    setState(() async {
+      _level = await LeaderboardHandler.currentLevel();
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    fetch();
+  }
+
+  @override
   Widget build(BuildContext context) {
     String getImage(int currentLevel) {
-      switch (level) {
+      switch (_level) {
         case 0:
           return 'Level-00.png';
         case 1:
@@ -48,7 +68,7 @@ class HomePage extends StatelessWidget {
           showDallo: true),
       body: SingleChildScrollView(
         child: Image.asset(
-          "assets/images/${getImage(level)}",
+          "assets/images/${getImage(_level)}",
         ),
       ),
     );

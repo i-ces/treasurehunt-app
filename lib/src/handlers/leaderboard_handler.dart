@@ -15,6 +15,7 @@ class LeaderboardHandler {
         for (var user in data) {
           users.add(User.fromJson(user['user']));
         }
+        print("uses length: ${users.length}");
 
         return users;
       } catch (e) {
@@ -22,6 +23,19 @@ class LeaderboardHandler {
       }
     } else {
       throw 'Couldn\'t get leaderboard';
+    }
+  }
+
+  static Future<int> currentLevel() async {
+    try {
+      final response = await ApiMiddleware.get('/myposition');
+
+      int level = jsonDecode(response.body)['level_id'];
+      print("level = $level");
+      return level;
+    } catch (e) {
+      print("Erro fetching my position: ${e}");
+      return 0;
     }
   }
 }

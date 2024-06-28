@@ -30,6 +30,7 @@ class RiddleHandler {
     try {
       final response = await ApiMiddleware.post(
           '/riddles/$riddle/check_answer', {'answer': answer});
+
       print("response: ${response.body}");
       final data = jsonDecode(response.body);
 

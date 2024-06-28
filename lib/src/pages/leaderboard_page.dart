@@ -65,7 +65,7 @@ class LeaderboardPage extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
                                 LeaderboardComponent(
-                                  teamname: "Team \n${leader1.name}",
+                                  teamname: "Team \n${leader2.name}",
                                   containerHeight: 120,
                                   containerWidth: 100,
                                   circleHeight: 100,
@@ -76,13 +76,11 @@ class LeaderboardPage extends StatelessWidget {
                                       const EdgeInsets.only(top: 50),
                                   positionSmallCircle: 60 / 2,
                                   smallCircleText: '#2',
-                                  image: leader1.image ??
-                                      "https://media.licdn.com/dms/image/D4D03AQHSuNk6UZkW8A/profile-displayphoto-shrink_800_800/0/1709990314078?e=2147483647&v=beta&t=HcLW15bPXWgU9BysMc3W_SvFaHm1g0LpC2OS1_MzBHo",
+                                  image: "assets/images/second.png",
                                 ),
                                 LeaderboardComponent(
-                                  teamname: "Team \n${leader2.name}",
-                                  image: leader2.image ??
-                                      "https://media.licdn.com/dms/image/D4D03AQHSuNk6UZkW8A/profile-displayphoto-shrink_800_800/0/1709990314078?e=2147483647&v=beta&t=HcLW15bPXWgU9BysMc3W_SvFaHm1g0LpC2OS1_MzBHo",
+                                  teamname: "Team \n${leader1.name}",
+                                  image: "assets/images/winner.jpg",
                                 ),
                                 LeaderboardComponent(
                                   teamname: "Team \n${leader3.name}",
@@ -96,45 +94,44 @@ class LeaderboardPage extends StatelessWidget {
                                       const EdgeInsets.only(top: 50),
                                   positionSmallCircle: 60 / 2,
                                   smallCircleText: '#3',
-                                  image: leader3.image ??
-                                      "https://media.licdn.com/dms/image/D4D03AQHSuNk6UZkW8A/profile-displayphoto-shrink_800_800/0/1709990314078?e=2147483647&v=beta&t=HcLW15bPXWgU9BysMc3W_SvFaHm1g0LpC2OS1_MzBHo",
-                                )
+                                  image: "assets/images/third.png",
+                                ),
                               ],
                             ),
                           ),
-                          ListView.builder(
-                            shrinkWrap: true,
-                            physics: const NeverScrollableScrollPhysics(),
-                            itemCount: snapshot.data!.length - 3,
-                            itemBuilder: (context, index) {
-                              final leader = snapshot.data![index + 3] as User;
-                              return Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 20, vertical: 10),
-                                child: Container(
-                                  height: 70,
-                                  padding: const EdgeInsets.symmetric(
-                                      vertical: 12.0, horizontal: 24.0),
-                                  decoration: BoxDecoration(
-                                    color: AppColors.MainColor,
-                                    borderRadius: BorderRadius.circular(
-                                      32,
-                                    ),
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                        "#${index + 4} Team ${leader.name}",
-                                        overflow: TextOverflow.ellipsis,
-                                        maxLines: 1,
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 24,
-                                        )),
-                                  ),
-                                ),
-                              );
-                            },
-                          ),
+                          // ListView.builder(
+                          //   shrinkWrap: true,
+                          //   physics: const NeverScrollableScrollPhysics(),
+                          //   itemCount: snapshot.data!.length - 3,
+                          //   itemBuilder: (context, index) {
+                          //     final leader = snapshot.data![index + 3] as User;
+                          //     return Padding(
+                          //       padding: const EdgeInsets.symmetric(
+                          //           horizontal: 20, vertical: 10),
+                          //       child: Container(
+                          //         height: 70,
+                          //         padding: const EdgeInsets.symmetric(
+                          //             vertical: 12.0, horizontal: 24.0),
+                          //         decoration: BoxDecoration(
+                          //           color: AppColors.MainColor,
+                          //           borderRadius: BorderRadius.circular(
+                          //             32,
+                          //           ),
+                          //         ),
+                          //         child: Center(
+                          //           child: Text(
+                          //               "#${index + 4} Team ${leader.name}",
+                          //               overflow: TextOverflow.ellipsis,
+                          //               maxLines: 1,
+                          //               style: TextStyle(
+                          //                 color: Colors.white,
+                          //                 fontSize: 24,
+                          //               )),
+                          //         ),
+                          //       ),
+                          //     );
+                          //   },
+                          // ),
                         ],
                       );
                     }

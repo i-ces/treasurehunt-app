@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:treasurehunt/src/handlers/level_handler.dart';
-import 'package:treasurehunt/src/models/riddle.dart';
 import 'package:treasurehunt/src/screens/riddle_page.dart';
 import 'package:treasurehunt/src/utils/colors.dart';
 import 'package:treasurehunt/src/widgets/custom_app_bar.dart';
@@ -23,7 +22,7 @@ class LevelDetailPage extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar(
         appBarHeight: 200,
-        name: 'Level $levelNumber',
+        name: 'Level ${levelNumber + 1}',
         showDallo: true,
         showBackButtonInDallo: true,
         onBackPressedInDallo: () => Navigator.of(context).pop(),
@@ -34,7 +33,7 @@ class LevelDetailPage extends StatelessWidget {
           const SizedBox(height: 20),
           Expanded(
             child: FutureBuilder(
-              future: LevelHandler.getLevel(levelNumber),
+              future: LevelHandler.getLevel(levelNumber + 1),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return const Center(child: CircularProgressIndicator());

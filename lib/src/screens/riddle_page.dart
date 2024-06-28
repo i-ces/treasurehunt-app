@@ -36,13 +36,13 @@ class _RiddlePageState extends State<RiddlePage> {
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => CorrectAns(status: Status.ohno)));
+                builder: (context) => CorrectAns(status: Status.danger)));
       }
     } catch (e) {
       Navigator.push(
           context,
           MaterialPageRoute(
-              builder: (context) => CorrectAns(status: Status.ohno)));
+              builder: (context) => CorrectAns(status: Status.danger)));
     }
   }
 
@@ -61,7 +61,7 @@ class _RiddlePageState extends State<RiddlePage> {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const Center(child: CircularProgressIndicator());
             } else if (snapshot.hasError) {
-              return const Center(child: Text('Error loading riddle'));
+              return const Center(child: Text('Error loading riddle: '));
             } else if (!snapshot.hasData) {
               return const Center(child: Text('No riddle found'));
             } else {
@@ -151,8 +151,7 @@ class _RiddlePageState extends State<RiddlePage> {
                       ),
                       CustomButton(
                         text: 'Submit',
-                        onPressed: () =>
-                            submitAnswer(_controller.text.trim().toLowerCase()),
+                        onPressed: () => submitAnswer(_controller.text.trim()),
                       ),
                     ],
                   ),

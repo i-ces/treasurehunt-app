@@ -11,7 +11,11 @@ class SponsorsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: CustomAppBar(appBarHeight: 200, name: 'Get to know our sponsors!', showDallo: true,),
+      appBar: CustomAppBar(
+        appBarHeight: 200,
+        name: 'Get to know our sponsors!',
+        showDallo: true,
+      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [

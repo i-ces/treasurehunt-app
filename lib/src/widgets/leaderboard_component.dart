@@ -70,7 +70,7 @@ class LeaderboardComponent extends StatelessWidget {
                     border:
                         Border.all(color: const Color(0xffFBAE40), width: 8),
                     image: DecorationImage(
-                        image: NetworkImage(image), fit: BoxFit.cover)),
+                        image: AssetImage(image), fit: BoxFit.cover)),
               ),
               Positioned(
                 bottom: -15,

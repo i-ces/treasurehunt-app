@@ -39,6 +39,7 @@ class _InverseSplashScreenState extends State<InverseSplashScreen> {
       if (token.client.isNotEmpty &&
           token.token.isNotEmpty &&
           token.uid.isNotEmpty) {
+        print("Token is not empty");
         // Go to homescreen
         await Future.delayed(const Duration(milliseconds: 2300), () async {
           Navigator.pushReplacement(
@@ -46,6 +47,8 @@ class _InverseSplashScreenState extends State<InverseSplashScreen> {
             MaterialPageRoute(builder: (context) => const HomeScreen()),
           );
         });
+      } else {
+        print("token is empty");
       }
     });
   }

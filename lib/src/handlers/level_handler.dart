@@ -10,6 +10,7 @@ class LevelHandler {
 
     if (response.statusCode == 200) {
       final List<dynamic> data = jsonDecode(response.body);
+      print(data);
       return data.map((e) => Level.fromJson(e)).toList();
     } else {
       throw Exception("Failed to fetch levels");
@@ -21,6 +22,7 @@ class LevelHandler {
 
     if (response.statusCode == 200) {
       final Map<String, dynamic> data = jsonDecode(response.body);
+      print("data: $data");
       return data["riddles"].map<Riddle>((e) => Riddle.fromJson(e)).toList();
     } else {
       throw Exception("Failed to fetch level");

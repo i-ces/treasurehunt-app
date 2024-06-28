@@ -35,16 +35,16 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Future<void> login() async {
-    // if (_usernameController.text.length < 4 ||
-    //     _passwordController.text.length < 4) {
-    //   return;
-    // }
+    if (_usernameController.text.length < 4 ||
+        _passwordController.text.length < 4) {
+      return;
+    }
 
     try {
       setState(() {
         isLoading = true;
       });
-      await Future.delayed(const Duration(seconds: 2));
+
       final authCred = await AuthHandler.login(
           _usernameController.text, _passwordController.text);
 

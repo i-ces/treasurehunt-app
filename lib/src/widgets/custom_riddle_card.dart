@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:treasurehunt/src/handlers/riddle_handler.dart';
 import 'package:treasurehunt/src/utils/colors.dart';
 
 class CustomRiddleCard extends StatelessWidget {
