@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:treasurehunt/src/handlers/leaderboard_handler.dart';
+import 'package:treasurehunt/src/models/user.dart';
 import 'package:treasurehunt/src/utils/colors.dart';
 import 'package:treasurehunt/src/widgets/custom_app_bar.dart';
 import 'package:treasurehunt/src/widgets/leaderboard_component.dart';
@@ -26,137 +28,117 @@ class LeaderboardPage extends StatelessWidget {
             child: SingleChildScrollView(
               child: Padding(
                 padding: const EdgeInsets.only(bottom: 12, top: 20),
-                child: Column(
-                  children: [
-                    const Padding(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: 14.0, vertical: 22.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.end,
+                child: FutureBuilder(
+                  future: LeaderboardHandler.get(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    } else if (snapshot.hasError) {
+                      return Center(
+                        child: Text(
+                          'An error occurred ${snapshot.error.toString()}',
+                          style:
+                              const TextStyle(color: Colors.red, fontSize: 18),
+                        ),
+                      );
+                    } else if (snapshot.data!.isEmpty) {
+                      return const Center(
+                        child: Text(
+                          'No data available',
+                          style: TextStyle(fontSize: 18),
+                        ),
+                      );
+                    } else {
+                      final leader1 = snapshot.data![0] as User;
+                      final leader2 = snapshot.data![1] as User;
+                      final leader3 = snapshot.data![2] as User;
+
+                      return Column(
                         children: [
-                          LeaderboardComponent(
-                            teamname: '123',
-                            containerHeight: 120,
-                            containerWidth: 100,
-                            circleHeight: 100,
-                            circleWidth: 100,
-                            smallCircleWidth: 30,
-                            smallCircleHeight: 30,
-                            containerPaddingFromTop: EdgeInsets.only(top: 50),
-                            positionSmallCircle: 60 / 2,
-                            smallCircleText: '#2',
-                          ),
-                          LeaderboardComponent(
-                            teamname: 'Error 404',
-                          ),
-                          LeaderboardComponent(
-                            teamname: '678',
-                            containerHeight: 120,
-                            containerWidth: 100,
-                            circleHeight: 100,
-                            circleWidth: 100,
-                            smallCircleHeight: 30,
-                            smallCircleWidth: 30,
-                            containerPaddingFromTop: EdgeInsets.only(top: 50),
-                            positionSmallCircle: 60 / 2,
-                            smallCircleText: '#3',
-                          )
-                        ],
-                      ),
-                    ),
-                    // const Padding(
-                    //   padding:
-                    //       EdgeInsets.symmetric(horizontal: 20, vertical: 4),
-                    //   child: FloatingBar(
-                    //     name: '234',
-                    //     contestant: true,
-                    //     position: '#1',
-                    //     showElevation: false,
-                    //     dalloColor: Color(0xff233974),
-                    //     dalloContentColor: Color(0xffffffff)
-                    //   ),
-                    // ),
-                    // const Padding(
-                    //   padding:
-                    //       EdgeInsets.symmetric(horizontal: 20, vertical: 4),
-                    //   child: FloatingBar(
-                    //     name: '456',
-                    //     contestant: true,
-                    //     position: '#2',
-                    //     showElevation: false,
-                    //     dalloColor: Color(0xff233974),
-                    //     dalloContentColor: Color(0xffffffff),
-                    //   ),
-                    // ),
-                    // const Padding(
-                    //   padding:
-                    //       EdgeInsets.symmetric(horizontal: 20, vertical: 4),
-                    //   child: FloatingBar(
-                    //     name: '789',
-                    //     contestant: true,
-                    //     position: '#3',
-                    //     showElevation: false,
-                    //     dalloColor: Color(0xff233974),
-                    //     dalloContentColor: Color(0xffffffff)
-                    //   ),
-                    // ),
-                    // const Padding(
-                    //   padding:
-                    //       EdgeInsets.symmetric(horizontal: 20, vertical: 4),
-                    //   child: FloatingBar(
-                    //       name: '56664',
-                    //       contestant: true,
-                    //       position: '#4',
-                    //       showElevation: false,
-                    //       dalloColor: Color(0xff233974),
-                    //       dalloContentColor: Color(0xffffffff)
-                    //       ),
-
-                    // ),
-                    // const Padding(
-                    //   padding:
-                    //       EdgeInsets.symmetric(horizontal: 20, vertical: 4),
-                    //   child: FloatingBar(
-                    //       name: '56664',
-                    //       contestant: true,
-                    //       position: '#4',
-                    //       showElevation: false,
-                    //       dalloColor: Color(0xff233974),
-                    //       dalloContentColor: Color(0xffffffff)
-                    //       ),
-
-                    // )
-                    ListView.builder(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemCount: dalloData.length,
-                      itemBuilder: (context, index) {
-                        return Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 10),
-                          child: Container(
-                            height: 70,
+                          Padding(
                             padding: const EdgeInsets.symmetric(
-                                vertical: 12.0, horizontal: 24.0),
-                            decoration: BoxDecoration(
-                              color: AppColors.MainColor,
-                              borderRadius: BorderRadius.circular(
-                                32,
-                              ),
-                            ),
-                            child: const Center(
-                              child: Text("#01 Team Diggers",
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 24,
-                                  )),
+                                horizontal: 14.0, vertical: 22.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                LeaderboardComponent(
+                                  teamname: "Team \n${leader1.name}",
+                                  containerHeight: 120,
+                                  containerWidth: 100,
+                                  circleHeight: 100,
+                                  circleWidth: 100,
+                                  smallCircleWidth: 30,
+                                  smallCircleHeight: 30,
+                                  containerPaddingFromTop:
+                                      const EdgeInsets.only(top: 50),
+                                  positionSmallCircle: 60 / 2,
+                                  smallCircleText: '#2',
+                                  image: leader1.image ??
+                                      "https://media.licdn.com/dms/image/D4D03AQHSuNk6UZkW8A/profile-displayphoto-shrink_800_800/0/1709990314078?e=2147483647&v=beta&t=HcLW15bPXWgU9BysMc3W_SvFaHm1g0LpC2OS1_MzBHo",
+                                ),
+                                LeaderboardComponent(
+                                  teamname: "Team \n${leader2.name}",
+                                  image: leader2.image ??
+                                      "https://media.licdn.com/dms/image/D4D03AQHSuNk6UZkW8A/profile-displayphoto-shrink_800_800/0/1709990314078?e=2147483647&v=beta&t=HcLW15bPXWgU9BysMc3W_SvFaHm1g0LpC2OS1_MzBHo",
+                                ),
+                                LeaderboardComponent(
+                                  teamname: "Team \n${leader3.name}",
+                                  containerHeight: 120,
+                                  containerWidth: 100,
+                                  circleHeight: 100,
+                                  circleWidth: 100,
+                                  smallCircleHeight: 30,
+                                  smallCircleWidth: 30,
+                                  containerPaddingFromTop:
+                                      const EdgeInsets.only(top: 50),
+                                  positionSmallCircle: 60 / 2,
+                                  smallCircleText: '#3',
+                                  image: leader3.image ??
+                                      "https://media.licdn.com/dms/image/D4D03AQHSuNk6UZkW8A/profile-displayphoto-shrink_800_800/0/1709990314078?e=2147483647&v=beta&t=HcLW15bPXWgU9BysMc3W_SvFaHm1g0LpC2OS1_MzBHo",
+                                )
+                              ],
                             ),
                           ),
-                        );
-                      },
-                    ),
-                  ],
+                          ListView.builder(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemCount: snapshot.data!.length - 3,
+                            itemBuilder: (context, index) {
+                              final leader = snapshot.data![index + 3] as User;
+                              return Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 20, vertical: 10),
+                                child: Container(
+                                  height: 70,
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical: 12.0, horizontal: 24.0),
+                                  decoration: BoxDecoration(
+                                    color: AppColors.MainColor,
+                                    borderRadius: BorderRadius.circular(
+                                      32,
+                                    ),
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                        "#${index + 4} Team ${leader.name}",
+                                        overflow: TextOverflow.ellipsis,
+                                        maxLines: 1,
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 24,
+                                        )),
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                        ],
+                      );
+                    }
+                  },
                 ),
               ),
             ),
