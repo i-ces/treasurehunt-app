@@ -34,8 +34,13 @@ class LeaderboardPage extends StatelessWidget {
                   builder: (context, snapshot) {
                     print("inside");
                     if (snapshot.connectionState == ConnectionState.waiting) {
-                      return const Center(
-                        child: CircularProgressIndicator(),
+                      return Center(
+                        child: Padding(
+                          padding: EdgeInsets.only(
+                              top: (MediaQuery.sizeOf(context).height - 200) *
+                                  0.4),
+                          child: const CircularProgressIndicator(),
+                        ),
                       );
                     } else if (snapshot.hasError) {
                       return Center(
