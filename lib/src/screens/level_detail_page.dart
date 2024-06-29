@@ -33,7 +33,7 @@ class LevelDetailPage extends StatelessWidget {
           const SizedBox(height: 20),
           Expanded(
             child: FutureBuilder(
-              future: LevelHandler.getLevel(levelNumber + 1),
+              future: LevelHandler.getLevel(levelNumber),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return const Center(child: CircularProgressIndicator());
@@ -45,7 +45,7 @@ class LevelDetailPage extends StatelessWidget {
                   ));
                 } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
                   return const Center(
-                      child: Text('No description available',
+                      child: Text('No riddles available',
                           style: TextStyle(fontSize: 18)));
                 } else {
                   return Padding(

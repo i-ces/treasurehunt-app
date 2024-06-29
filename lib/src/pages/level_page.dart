@@ -37,7 +37,8 @@ class _LevelPageState extends State<LevelPage> {
                   itemBuilder: (context, index) {
                     return GestureDetector(
                       onTap: () {
-                        snapshot.data![index].status == 'locked'
+                        snapshot.data![index].status == 'locked' ||
+                                snapshot.data![index].status == 'solved'
                             ? null
                             : Navigator.push(
                                 context,
@@ -52,8 +53,7 @@ class _LevelPageState extends State<LevelPage> {
                       child: CustomRiddleCard(
                         riddle: snapshot.data![index].title,
                         id: snapshot.data![index].level,
-                        isCompleted:
-                            snapshot.data![index].status == 'completed',
+                        isCompleted: snapshot.data![index].status == 'solved',
                         isUnlocked: snapshot.data![index].status == 'current',
                       ),
                     );
