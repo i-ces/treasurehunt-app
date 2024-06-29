@@ -101,39 +101,86 @@ class LeaderboardPage extends StatelessWidget {
                               ],
                             ),
                           ),
-                          // ListView.builder(
-                          //   shrinkWrap: true,
-                          //   physics: const NeverScrollableScrollPhysics(),
-                          //   itemCount: snapshot.data!.length - 3,
-                          //   itemBuilder: (context, index) {
-                          //     final leader = snapshot.data![index + 3] as User;
-                          //     return Padding(
-                          //       padding: const EdgeInsets.symmetric(
-                          //           horizontal: 20, vertical: 10),
-                          //       child: Container(
-                          //         height: 70,
-                          //         padding: const EdgeInsets.symmetric(
-                          //             vertical: 12.0, horizontal: 24.0),
-                          //         decoration: BoxDecoration(
-                          //           color: AppColors.MainColor,
-                          //           borderRadius: BorderRadius.circular(
-                          //             32,
-                          //           ),
-                          //         ),
-                          //         child: Center(
-                          //           child: Text(
-                          //               "#${index + 4} Team ${leader.name}",
-                          //               overflow: TextOverflow.ellipsis,
-                          //               maxLines: 1,
-                          //               style: TextStyle(
-                          //                 color: Colors.white,
-                          //                 fontSize: 24,
-                          //               )),
-                          //         ),
-                          //       ),
-                          //     );
-                          //   },
-                          // ),
+                          ListView.builder(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemCount: snapshot.data!.length - 3,
+                            itemBuilder: (context, index) {
+                              final leader = snapshot.data![index + 3] as User;
+                              return Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 20, vertical: 10),
+                                child: Container(
+                                  height: 90,
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical: 12.0, horizontal: 15.0),
+                                  decoration: BoxDecoration(
+                                    color: AppColors.MainColor,
+                                    borderRadius: BorderRadius.circular(
+                                      12,
+                                    ),
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      Stack(
+                                        clipBehavior: Clip.none,
+                                        children: [
+                                          Container(
+                                            decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(15),
+                                                border: Border.all(
+                                                  width: 3,
+                                                  color: AppColors.AccentColor,
+                                                )),
+                                            child: ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(12),
+                                                child: Image.network(
+                                                  leader.image!,
+                                                  fit: BoxFit.cover,
+                                                )),
+                                          ),
+                                          Positioned(
+                                            bottom: -10,
+                                            right: -10,
+                                            child: Container(
+                                              alignment: Alignment.center,
+                                              height: 30,
+                                              width: 30,
+                                              decoration: const BoxDecoration(
+                                                shape: BoxShape.circle,
+                                                color: AppColors.AccentColor,
+                                              ),
+                                              child: FittedBox(
+                                                child: Text("#${index + 4}",
+                                                    style: const TextStyle(
+                                                      color: Colors.white,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: 15,
+                                                    )),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(width: 20),
+                                      Center(
+                                        child: Text("Team ${leader.name}",
+                                            overflow: TextOverflow.ellipsis,
+                                            maxLines: 1,
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 24,
+                                            )),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
                         ],
                       );
                     }

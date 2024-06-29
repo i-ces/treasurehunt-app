@@ -22,7 +22,7 @@ class LevelDetailPage extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar(
         appBarHeight: 200,
-        name: 'Level ${levelNumber + 1}',
+        name: 'Level $levelNumber',
         showDallo: true,
         showBackButtonInDallo: true,
         onBackPressedInDallo: () => Navigator.of(context).pop(),
