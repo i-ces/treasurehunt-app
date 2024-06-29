@@ -18,12 +18,16 @@ class LevelHandler {
   }
 
   static Future<List<Riddle>> getLevel(int id) async {
-    final response = await ApiMiddleware.get("/levels/$id");
+    final response = await ApiMiddleware.get("/riddles?level_id=$id");
 
+    print("Level wise riddles: ${response.body}");
     if (response.statusCode == 200) {
-      final Map<String, dynamic> data = jsonDecode(response.body);
-      print("data: $data");
-      return data["riddles"].map<Riddle>((e) => Riddle.fromJson(e)).toList();
+      final data = jsonDecode(response.body);
+      List<Riddle> riddles = [];
+      for (var riddle in data) {
+        riddles.add(Riddle.fromJson(riddle));
+      }
+      return riddles;
     } else {
       throw Exception("Failed to fetch level");
     }

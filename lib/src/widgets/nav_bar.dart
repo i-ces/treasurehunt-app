@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:treasurehunt/src/utils/colors.dart';
 
 class NavBar extends StatefulWidget {
-  final void Function(int) onItemSelected;
+  final void Function(int)? onItemSelected;
   final int selectedIndex;
 
   const NavBar({
@@ -30,7 +30,7 @@ class _NavBarState extends State<NavBar> {
           label: '',
         ),
         BottomNavigationBarItem(
-          icon: buildNavIcon(1, 'leaderboard.png', widget.selectedIndex),
+          icon: buildNavIcon(1, 'riddles.png', widget.selectedIndex),
           label: '',
         ),
         BottomNavigationBarItem(
@@ -38,7 +38,7 @@ class _NavBarState extends State<NavBar> {
           label: '',
         ),
         BottomNavigationBarItem(
-          icon: buildNavIcon(3, 'riddles.png', widget.selectedIndex),
+          icon: buildNavIcon(3, 'leaderboard.png', widget.selectedIndex),
           label: '',
         ),
         BottomNavigationBarItem(

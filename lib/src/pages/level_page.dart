@@ -37,18 +37,19 @@ class _LevelPageState extends State<LevelPage> {
                   itemBuilder: (context, index) {
                     return GestureDetector(
                       onTap: () {
-                        snapshot.data![index].status == 'locked' ||
-                                snapshot.data![index].status == 'solved'
-                            ? null
-                            : Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => LevelDetailPage(
-                                    levelTitle: snapshot.data![index].title,
-                                    levelNumber: snapshot.data![index].level,
-                                  ),
-                                ),
-                              );
+                        // snapshot.data![index].status == 'locked' ||
+                        //         snapshot.data![index].status == 'solved'
+                        //     ? null
+                        //     :
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => LevelDetailPage(
+                              levelTitle: snapshot.data![index].title,
+                              levelNumber: snapshot.data![index].level,
+                            ),
+                          ),
+                        );
                       },
                       child: CustomRiddleCard(
                         riddle: snapshot.data![index].title,

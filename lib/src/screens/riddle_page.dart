@@ -91,7 +91,7 @@ class _RiddlePageState extends State<RiddlePage> {
                       ),
                       const Divider(color: AppColors.AccentColor),
                       Padding(
-                        padding: const EdgeInsets.all(16.0),
+                        padding: const EdgeInsets.all(0.0),
                         child: Center(
                           child: Stack(
                             alignment: Alignment.center,
@@ -116,7 +116,8 @@ class _RiddlePageState extends State<RiddlePage> {
                               ),
                               // TextFormField
                               Container(
-                                width: 300, // Adjust the width as needed
+                                width: double
+                                    .infinity, // Adjust the width as needed
                                 height: 200, // Adjust the height as needed
                                 padding: const EdgeInsets.all(
                                     8.0), // Adjust the padding as needed
@@ -149,6 +150,7 @@ class _RiddlePageState extends State<RiddlePage> {
                           ),
                         ),
                       ),
+                      const SizedBox(height: 20),
                       CustomButton(
                         text: 'Submit',
                         onPressed: () => submitAnswer(_controller.text.trim()),

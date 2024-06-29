@@ -42,9 +42,9 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final List<Widget> _screens = [
       HomePage(level: userlevel),
-      const LeaderboardPage(),
-      SizedBox(),
       LevelPage(level: userlevel),
+      SizedBox(),
+      const LeaderboardPage(),
       const SponsorsPage(),
     ];
 
