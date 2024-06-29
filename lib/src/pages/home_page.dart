@@ -18,18 +18,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _level = 0;
 
-  fetch() async {
-    setState(() async {
-      _level = await LeaderboardHandler.currentLevel();
-    });
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    fetch();
-  }
-
   @override
   Widget build(BuildContext context) {
     String getImage(int currentLevel) {
@@ -67,8 +55,10 @@ class _HomePageState extends State<HomePage> {
           name: 'Your RoadMap For Treasure Hunt',
           showDallo: true),
       body: SingleChildScrollView(
-        child: Image.asset(
-          "assets/images/${getImage(_level)}",
+        child: FutureBuilder(
+          future: LeaderboardHandler.currentLevel(),
+          builder: (context, snapshot) =>
+              Image.asset("assets/images/${getImage(_level)}"),
         ),
       ),
     );
