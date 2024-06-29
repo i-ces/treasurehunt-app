@@ -35,17 +35,19 @@ class _LevelPageState extends State<LevelPage> {
                   padding: const EdgeInsets.all(8.0),
                   itemCount: snapshot.data!.length,
                   itemBuilder: (context, index) {
-                    return InkWell(
+                    return GestureDetector(
                       onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => LevelDetailPage(
-                              levelTitle: snapshot.data![index].title,
-                              levelNumber: snapshot.data![index].level,
-                            ),
-                          ),
-                        );
+                        snapshot.data![index].status == 'locked'
+                            ? null
+                            : Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => LevelDetailPage(
+                                    levelTitle: snapshot.data![index].title,
+                                    levelNumber: snapshot.data![index].level,
+                                  ),
+                                ),
+                              );
                       },
                       child: CustomRiddleCard(
                         riddle: snapshot.data![index].title,

@@ -32,6 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void _onItemTapped(int index) {
+    if (index == 2) return;
     setState(() {
       _selectedIndex = index;
     });
@@ -42,6 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
     final List<Widget> _screens = [
       HomePage(level: userlevel),
       const LeaderboardPage(),
+      SizedBox(),
       LevelPage(level: userlevel),
       const SponsorsPage(),
     ];
