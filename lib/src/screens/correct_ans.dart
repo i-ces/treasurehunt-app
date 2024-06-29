@@ -96,10 +96,8 @@ class _CorrectAnsState extends State<CorrectAns> {
                   CustomButton(
                       text: 'Next',
                       onPressed: () {
-                        Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const HomeScreen()));
+                        // Navigator.pop(context);
+                        Navigator.pop(context);
                       }),
                 ],
               ),

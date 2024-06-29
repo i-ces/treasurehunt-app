@@ -12,27 +12,31 @@ class LeaderboardComponent extends StatelessWidget {
   final double? positionSmallCircle;
   final String smallCircleText;
   final String image;
+  final bool isFirst;
 
-  const LeaderboardComponent(
-      {super.key,
-      required this.teamname,
-      required this.image,
-      this.containerHeight,
-      this.smallCircleText = '#1',
-      this.containerWidth,
-      this.circleHeight,
-      this.circleWidth,
-      this.containerPaddingFromTop = const EdgeInsets.only(top: 80),
-      this.positionSmallCircle,
-      this.smallCircleHeight,
-      this.smallCircleWidth});
+  const LeaderboardComponent({
+    super.key,
+    required this.teamname,
+    required this.image,
+    this.containerHeight,
+    this.smallCircleText = '#1',
+    this.containerWidth,
+    this.circleHeight,
+    this.circleWidth,
+    this.containerPaddingFromTop = const EdgeInsets.only(top: 80),
+    this.positionSmallCircle,
+    this.smallCircleHeight,
+    this.smallCircleWidth,
+    this.isFirst = false,
+  });
   @override
   Widget build(BuildContext context) {
     return Stack(
       clipBehavior: Clip.none,
       children: [
         // Image.asset('assets/images/random.png'),
-        Center(
+        Positioned(
+          top: containerHeight != null ? -15 : 0,
           child: Container(
             margin: const EdgeInsets.only(top: 70),
             height: containerHeight ?? 177,
@@ -73,7 +77,7 @@ class LeaderboardComponent extends StatelessWidget {
                         image: NetworkImage(image), fit: BoxFit.cover)),
               ),
               Positioned(
-                bottom: -15,
+                bottom: isFirst ? -15 : -10,
                 left: positionSmallCircle ?? 100 / 2,
                 child: Container(
                   height: smallCircleHeight ?? 41,
@@ -100,7 +104,7 @@ class LeaderboardComponent extends StatelessWidget {
               )
             ],
           ),
-        )
+        ),
       ],
     );
   }

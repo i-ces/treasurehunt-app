@@ -17,6 +17,15 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _level = 0;
+  final ScrollController _controller = ScrollController();
+
+  fetch() {
+    LeaderboardHandler.currentLevel().then((value) {
+      setState(() {
+        _level = value == 0 ? value : value - 1;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,8 +64,9 @@ class _HomePageState extends State<HomePage> {
           name: 'Your RoadMap For Treasure Hunt',
           showDallo: true),
       body: SingleChildScrollView(
+        controller: _controller,
         child: FutureBuilder(
-          future: LeaderboardHandler.currentLevel(),
+          future: fetch(),
           builder: (context, snapshot) =>
               Image.asset("assets/images/${getImage(_level)}"),
         ),

@@ -98,7 +98,7 @@ class DalloContainer extends StatelessWidget {
       alignment: Alignment.center,
       padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
       width: MediaQuery.of(context).size.width,
-      height: 60,
+      height: 70,
       child: FloatingBar(
         name: name,
         dalloContentColor: const Color(0xff233974),

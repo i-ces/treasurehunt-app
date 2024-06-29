@@ -88,6 +88,7 @@ class LeaderboardPage extends StatelessWidget {
                                 LeaderboardComponent(
                                   teamname: "Team \n${leader1.name}",
                                   image: leader1.image!,
+                                  isFirst: true,
                                 ),
                                 LeaderboardComponent(
                                   teamname: "Team \n${leader3.name}",
@@ -106,6 +107,7 @@ class LeaderboardPage extends StatelessWidget {
                               ],
                             ),
                           ),
+                          const SizedBox(height: 100),
                           ListView.builder(
                             shrinkWrap: true,
                             physics: const NeverScrollableScrollPhysics(),
@@ -131,6 +133,8 @@ class LeaderboardPage extends StatelessWidget {
                                         clipBehavior: Clip.none,
                                         children: [
                                           Container(
+                                            width: 70,
+                                            height: 90,
                                             decoration: BoxDecoration(
                                                 borderRadius:
                                                     BorderRadius.circular(15),

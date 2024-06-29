@@ -83,6 +83,7 @@ class LevelDetailPage extends StatelessWidget {
                                             builder: (context) => RiddlePage(
                                                   levelNumber,
                                                   snapshot.data![index].id,
+                                                  index,
                                                 )));
                                   },
                                   child: Container(

@@ -75,6 +75,12 @@ class FloatingBar extends StatelessWidget {
                 ),
               ),
             ),
+            GestureDetector(
+                onTap: null,
+                child:
+                    const Icon(Icons.arrow_back, size: 30, color: Colors.white)
+                // Navigator.of(context).pop(),
+                ),
           ],
         ),
       ),
