@@ -19,6 +19,7 @@ class LeaderboardPage extends StatelessWidget {
   });
   @override
   Widget build(BuildContext context) {
+    print("leaderboard page");
     return Scaffold(
       appBar: const CustomAppBar(
           appBarHeight: 200, name: 'Leaderboard', showDallo: true),
@@ -31,6 +32,7 @@ class LeaderboardPage extends StatelessWidget {
                 child: FutureBuilder(
                   future: LeaderboardHandler.get(),
                   builder: (context, snapshot) {
+                    print("inside");
                     if (snapshot.connectionState == ConnectionState.waiting) {
                       return const Center(
                         child: CircularProgressIndicator(),
@@ -76,11 +78,11 @@ class LeaderboardPage extends StatelessWidget {
                                       const EdgeInsets.only(top: 50),
                                   positionSmallCircle: 60 / 2,
                                   smallCircleText: '#2',
-                                  image: "assets/images/second.png",
+                                  image: leader2.image!,
                                 ),
                                 LeaderboardComponent(
                                   teamname: "Team \n${leader1.name}",
-                                  image: "assets/images/winner.jpg",
+                                  image: leader1.image!,
                                 ),
                                 LeaderboardComponent(
                                   teamname: "Team \n${leader3.name}",
@@ -94,7 +96,7 @@ class LeaderboardPage extends StatelessWidget {
                                       const EdgeInsets.only(top: 50),
                                   positionSmallCircle: 60 / 2,
                                   smallCircleText: '#3',
-                                  image: "assets/images/third.png",
+                                  image: leader3.image!,
                                 ),
                               ],
                             ),

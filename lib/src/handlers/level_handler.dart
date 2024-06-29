@@ -10,7 +10,7 @@ class LevelHandler {
 
     if (response.statusCode == 200) {
       final List<dynamic> data = jsonDecode(response.body);
-      print(data);
+      print("LEVELS: $data");
       return data.map((e) => Level.fromJson(e)).toList();
     } else {
       throw Exception("Failed to fetch levels");

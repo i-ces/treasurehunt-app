@@ -1,5 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:treasurehunt/src/constants.dart';
+import 'package:treasurehunt/src/screens/login_screen.dart';
 import 'dart:convert';
 
 import 'package:treasurehunt/src/utils/services/token_service.dart';
@@ -19,7 +21,6 @@ class ApiMiddleware {
         'uid': token.uid,
       },
     );
-
     return response;
   }
 
