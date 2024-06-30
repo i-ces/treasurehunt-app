@@ -68,6 +68,7 @@ class _RiddlePageState extends State<RiddlePage> {
       appBar: CustomAppBar(
         showDallo: true,
         showBackButtonInDallo: true,
+        appBarHeight: 200,
         name: 'Level ${widget.level}',
       ),
       body: FutureBuilder<Riddle>(
