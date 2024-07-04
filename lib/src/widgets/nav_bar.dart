@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:treasurehunt/src/utils/colors.dart';
 
 class NavBar extends StatefulWidget {
-  final void Function(int) onItemSelected;
+  final void Function(int)? onItemSelected;
   final int selectedIndex;
 
   const NavBar({
@@ -19,50 +19,47 @@ class _NavBarState extends State<NavBar> {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
+      type: BottomNavigationBarType.fixed,
       selectedIconTheme: IconThemeData(
-        color: Colors.blue,
+        // color: AppColors.AccentColor,
+        size: 20,
       ),
       items: <BottomNavigationBarItem>[
         BottomNavigationBarItem(
-          icon: Icon(
-            Icons.home,
-            color: widget.selectedIndex == 0
-                ? AppColors.AccentColor
-                : AppColors.TextColor2,
-          ),
+          icon: buildNavIcon(0, 'home.png', widget.selectedIndex),
           label: '',
         ),
         BottomNavigationBarItem(
-          icon: Icon(
-            Icons.assessment_rounded,
-            color: widget.selectedIndex == 1
-                ? AppColors.AccentColor
-                : AppColors.TextColor2,
-          ),
+          icon: buildNavIcon(1, 'riddles.png', widget.selectedIndex),
           label: '',
         ),
         BottomNavigationBarItem(
-          icon: Icon(
-            Icons.assistant_photo_rounded,
-            color: widget.selectedIndex == 2
-                ? AppColors.AccentColor
-                : AppColors.TextColor2,
-          ),
+          icon: buildNavIcon(2, 'hack.png', widget.selectedIndex, isLogo: true),
           label: '',
         ),
         BottomNavigationBarItem(
-          icon: Icon(
-            Icons.lightbulb_rounded,
-            color: widget.selectedIndex == 3
-                ? AppColors.AccentColor
-                : AppColors.TextColor2,
-          ),
+          icon: buildNavIcon(3, 'leaderboard.png', widget.selectedIndex),
+          label: '',
+        ),
+        BottomNavigationBarItem(
+          icon: buildNavIcon(4, 'sponsors.png', widget.selectedIndex),
           label: '',
         ),
       ],
       currentIndex: widget.selectedIndex,
       selectedItemColor: AppColors.AccentColor,
       onTap: widget.onItemSelected,
+    );
+  }
+
+  Widget buildNavIcon(int index, String name, int selectedIndex,
+      {bool isLogo = false}) {
+    final isSelected = index == selectedIndex;
+    return Image.asset(
+      'assets/icons/$name',
+      height: isLogo ? 40 : 24,
+      width: isLogo ? 40 : 24,
+      color: (isLogo || !isSelected) ? null : Colors.orange[700],
     );
   }
 }

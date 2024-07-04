@@ -1,18 +1,22 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:treasurehunt/src/models/riddle.dart';
 
 part 'level.g.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable()
 class Level {
-  final int level_id;
-  final List<Riddle> riddles;
+  @JsonKey(name: 'level_int')
+  final int level;
+  final String title;
+  final String status;
 
   Level({
-    required this.level_id,
-    required this.riddles,
+    required this.level,
+    required this.title,
+    required this.status,
   });
 
   factory Level.fromJson(final Map<String, dynamic> json) =>
       _$LevelFromJson(json);
+
+  Map<String, dynamic> toJson() => _$LevelToJson(this);
 }

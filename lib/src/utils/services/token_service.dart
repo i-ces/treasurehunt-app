@@ -1,13 +1,19 @@
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:treasurehunt/src/models/auth_cred.dart';
 
-Future<void> storeBearerToken(String token) async {
+Future<void> storeAuthCred(AuthCred cred) async {
   final prefs = await SharedPreferences.getInstance();
-  await prefs.setString('bearer_token', token);
+  await prefs.setString('token', cred.token);
+  await prefs.setString('client', cred.client);
+  await prefs.setString('uid', cred.uid);
 }
 
-Future<String?> getBearerToken() async {
+Future<AuthCred> getAuthCred() async {
   final prefs = await SharedPreferences.getInstance();
-  return prefs.getString('bearer_token');
+  final token = prefs.getString('token') ?? '';
+  final client = prefs.getString('client') ?? '';
+  final uid = prefs.getString('uid') ?? '';
+  return AuthCred(token: token, client: client, uid: uid);
 }
 
 Future<void> storeUserLevel(int level) async {

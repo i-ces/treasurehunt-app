@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:treasurehunt/src/pages/home_page.dart';
 import 'package:treasurehunt/src/pages/leaderboard_page.dart';
-import 'package:treasurehunt/src/pages/level.dart';
+import 'package:treasurehunt/src/pages/level_page.dart';
 import 'package:treasurehunt/src/pages/sponsor.dart';
 import 'package:treasurehunt/src/utils/services/token_service.dart';
 import 'package:treasurehunt/src/widgets/nav_bar.dart';
@@ -32,6 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void _onItemTapped(int index) {
+    if (index == 2) return;
     setState(() {
       _selectedIndex = index;
     });
@@ -41,8 +42,9 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final List<Widget> _screens = [
       HomePage(level: userlevel),
-      const LeaderboardPage(),
       LevelPage(level: userlevel),
+      SizedBox(),
+      const LeaderboardPage(),
       const SponsorsPage(),
     ];
 

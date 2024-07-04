@@ -33,43 +33,54 @@ class FloatingBar extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             if (showBackButton)
-              IconButton(
-                  icon: const Icon(Icons.arrow_back), onPressed: onBackPressed
-
+              GestureDetector(
+                  onTap: () => Navigator.pop(context),
+                  child: const Icon(Icons.arrow_back, size: 30)
                   // Navigator.of(context).pop(),
                   ),
             if (contestant)
               Expanded(
                   child: Align(
                       alignment: Alignment.center,
-                      child: Text(
-                        position,
-                        style: const TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w600,
-                            fontFamily: 'Poppins',
-                            color: Color(0xffffffff)),
+                      child: FittedBox(
+                        child: Text(
+                          position,
+                          style: const TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w600,
+                              fontFamily: 'Poppins',
+                              color: Color(0xffffffff)),
+                        ),
                       ))),
             Expanded(
               child: Align(
                 alignment: Alignment.center,
-                child: Text(
-                  name,
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w400,
-                    fontFamily: 'Poppins',
-                    color: dalloContentColor,
-                  ),
-                  // background: #090F4780;
+                child: FittedBox(
+                  child: Text(
+                    name,
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w400,
+                      fontFamily: 'Poppins',
+                      color: dalloContentColor,
+                    ),
+                    // background: #090F4780;
 
-                  textAlign:
-                      showBackButton ? TextAlign.start : TextAlign.center,
+                    textAlign:
+                        showBackButton ? TextAlign.start : TextAlign.center,
+                  ),
                 ),
               ),
             ),
+            GestureDetector(
+                onTap: null,
+                child:
+                    const Icon(Icons.arrow_back, size: 30, color: Colors.white)
+                // Navigator.of(context).pop(),
+                ),
           ],
         ),
       ),

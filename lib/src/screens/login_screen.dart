@@ -19,6 +19,7 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   bool _obscureText = true;
+  bool isLoading = false;
 
   @override
   void dispose() {
@@ -38,18 +39,29 @@ class _LoginPageState extends State<LoginPage> {
         _passwordController.text.length < 4) {
       return;
     }
+
     try {
-      final token = await AuthHandler.login(
+      setState(() {
+        isLoading = true;
+      });
+
+      final authCred = await AuthHandler.login(
           _usernameController.text, _passwordController.text);
-      await storeBearerToken(token);
-      final saved_token = await getBearerToken();
-      print('saved_token: $saved_token');
+
+      await storeAuthCred(authCred);
+      setState(() {
+        isLoading = false;
+      });
+      // print('saved_token: $saved_token');
       // Go to homescreen
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => const HomeScreen()),
       );
     } catch (e) {
+      setState(() {
+        isLoading = false;
+      });
       showErrorToast('Failed to login');
     }
   }
@@ -144,19 +156,25 @@ class _LoginPageState extends State<LoginPage> {
                       const SizedBox(height: 168.0),
                       Column(
                         children: [
-                          CustomButton(
-                            text: 'LOGIN',
-                            onPressed: () {
-                              login();
-                              // Navigate to verified screen
-                              // Navigator.pushReplacement(
-                              //   context,
-                              //   MaterialPageRoute(
-                              //     builder: (context) => const HomeScreen(),
-                              //   ),
-                              // );
-                            },
-                          ),
+                          isLoading
+                              ? CustomButton(
+                                  text: '',
+                                  widget: const CircularProgressIndicator(
+                                      color: Colors.white),
+                                  onPressed: () {})
+                              : CustomButton(
+                                  text: 'LOGIN',
+                                  onPressed: () {
+                                    login();
+                                    // Navigate to verified screen
+                                    // Navigator.pushReplacement(
+                                    //   context,
+                                    //   MaterialPageRoute(
+                                    //     builder: (context) => const HomeScreen(),
+                                    //   ),
+                                    // );
+                                  },
+                                ),
                           const SizedBox(
                             height: 24,
                           ),
