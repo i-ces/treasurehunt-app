@@ -115,7 +115,7 @@ class LeaderboardPage extends StatelessWidget {
                               ],
                             ),
                           ),
-                          const SizedBox(height: 40),
+                          const SizedBox(height: 0),
                           ListView.builder(
                             shrinkWrap: true,
                             physics: const NeverScrollableScrollPhysics(),
@@ -185,16 +185,18 @@ class LeaderboardPage extends StatelessWidget {
                                       ),
                                       SizedBox(width: 20),
                                       Container(
+                                        alignment: Alignment.centerLeft,
                                         width:
                                             MediaQuery.sizeOf(context).width -
                                                 170,
                                         // width: double.infinity,
-                                        child: Text("Team ${leader.name}",
+                                        child: Text(leader.name!,
                                             overflow: TextOverflow.ellipsis,
                                             maxLines: 1,
                                             style: TextStyle(
                                               color: Colors.white,
-                                              fontSize: 24,
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: 20,
                                             )),
                                       ),
                                     ],
@@ -231,7 +233,7 @@ class LeaderboardHeader extends StatelessWidget {
     final width = isFirst ? deviceWidth * 0.3 : deviceWidth * 0.25;
     final double height = isFirst ? 180 : 120;
     return Padding(
-      padding: const EdgeInsets.only(top: 100),
+      padding: const EdgeInsets.only(top: 80),
       child: Stack(
         clipBehavior: Clip.none,
         children: [
