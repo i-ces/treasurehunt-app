@@ -40,23 +40,23 @@ class _RiddlePageState extends State<RiddlePage> {
             context,
             MaterialPageRoute(
                 builder: (context) =>
-                    CorrectAns(status: Status.congratulations)));
+                    const CorrectAns(status: Status.congratulations)));
       } else if (status == 'incorrect') {
         Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-                builder: (context) => CorrectAns(status: Status.ohno)));
+                builder: (context) => const CorrectAns(status: Status.ohno)));
       } else {
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => CorrectAns(status: Status.danger)));
+                builder: (context) => const CorrectAns(status: Status.danger)));
       }
     } catch (e) {
       Navigator.push(
           context,
           MaterialPageRoute(
-              builder: (context) => CorrectAns(status: Status.danger)));
+              builder: (context) => const CorrectAns(status: Status.danger)));
     }
   }
 
@@ -119,9 +119,9 @@ class _RiddlePageState extends State<RiddlePage> {
                                   mode: LaunchMode.externalApplication);
                             }
                           },
-                          child: Text(
+                          child: const Text(
                             "Click here for link",
-                            style: const TextStyle(
+                            style: TextStyle(
                               color: AppColors.AccentColor,
                               fontSize: 18,
                             ),

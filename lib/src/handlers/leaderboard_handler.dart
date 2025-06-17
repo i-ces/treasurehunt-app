@@ -36,7 +36,7 @@ class LeaderboardHandler {
       print("level = $level");
       return level;
     } catch (e) {
-      print("Erro fetching my position: ${e}");
+      print("Erro fetching my position: $e");
       return 0;
     }
   }

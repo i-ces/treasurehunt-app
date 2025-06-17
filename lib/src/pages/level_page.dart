@@ -6,7 +6,7 @@ import 'package:treasurehunt/src/widgets/custom_app_bar.dart';
 import 'package:treasurehunt/src/widgets/custom_riddle_card.dart';
 
 class LevelPage extends StatefulWidget {
-  LevelPage({this.level = 0, super.key});
+  const LevelPage({this.level = 0, super.key});
   final int level;
 
   @override
@@ -60,9 +60,9 @@ class _LevelPageState extends State<LevelPage> {
                   },
                 );
               } else if (snapshot.hasError) {
-                return Center(
+                return const Center(
                     child: Text("Failed to fetch levels",
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 20,
                           color: Colors.red,
                         )));

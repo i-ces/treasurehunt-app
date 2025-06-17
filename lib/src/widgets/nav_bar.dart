@@ -20,7 +20,7 @@ class _NavBarState extends State<NavBar> {
   Widget build(BuildContext context) {
     return BottomNavigationBar(
       type: BottomNavigationBarType.fixed,
-      selectedIconTheme: IconThemeData(
+      selectedIconTheme: const IconThemeData(
         // color: AppColors.AccentColor,
         size: 20,
       ),

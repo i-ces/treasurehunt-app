@@ -40,17 +40,17 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final List<Widget> _screens = [
+    final List<Widget> screens = [
       HomePage(level: userlevel),
       LevelPage(level: userlevel),
-      SizedBox(),
+      const SizedBox(),
       const LeaderboardPage(),
       const SponsorsPage(),
     ];
 
     return Scaffold(
       // appBar:  CustomAppBar(appBarHeight: 200),
-      body: _screens[_selectedIndex],
+      body: screens[_selectedIndex],
       bottomNavigationBar: NavBar(
         onItemSelected: _onItemTapped,
         selectedIndex: _selectedIndex,

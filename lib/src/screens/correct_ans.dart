@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:treasurehunt/src/screens/home_screen.dart';
 import 'package:treasurehunt/src/utils/colors.dart';
 import 'package:treasurehunt/src/widgets/custom_app_bar.dart';
 import 'package:treasurehunt/src/widgets/custom_button.dart';
@@ -36,12 +35,6 @@ class _CorrectAnsState extends State<CorrectAns> {
             "Looks like you made an oopsie! Please check\n the riddles carefully and answer again!";
         break;
       case Status.danger:
-        text = "Danger!";
-        imagePath = 'assets/images/trap.png';
-        subtext =
-            "Looks like you’ve encountered a trap! Please move a step back!";
-        break;
-      default:
         text = "Danger!";
         imagePath = 'assets/images/trap.png';
         subtext =

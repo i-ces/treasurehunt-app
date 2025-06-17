@@ -1,8 +1,5 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:treasurehunt/src/utils/colors.dart';
-import 'package:treasurehunt/src/utils/sponsors_data.dart';
 
 class Accordion extends StatefulWidget {
   // final String sponsorType;
@@ -101,7 +98,7 @@ class _AccordionState extends State<Accordion>
                     ),
                   ),
                 ),
-                SizedBox(width: 20),
+                const SizedBox(width: 20),
                 Expanded(
                   child: Text(
                     widget.sponsorName,
@@ -114,7 +111,7 @@ class _AccordionState extends State<Accordion>
                     ),
                   ),
                 ),
-                SizedBox(width: 20),
+                const SizedBox(width: 20),
                 Container(
                   decoration: const BoxDecoration(
                     shape: BoxShape.circle,

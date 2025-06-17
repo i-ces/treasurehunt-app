@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:treasurehunt/src/handlers/leaderboard_handler.dart';
-import 'package:treasurehunt/src/models/user.dart';
 import 'package:treasurehunt/src/utils/colors.dart';
 import 'package:treasurehunt/src/widgets/custom_app_bar.dart';
-import 'package:treasurehunt/src/widgets/leaderboard_component.dart';
 
 class LeaderboardPage extends StatelessWidget {
   const LeaderboardPage({super.key});
@@ -58,9 +56,9 @@ class LeaderboardPage extends StatelessWidget {
                         ),
                       );
                     } else {
-                      final leader1 = snapshot.data![0] as User;
-                      final leader2 = snapshot.data![1] as User;
-                      final leader3 = snapshot.data![2] as User;
+                      final leader1 = snapshot.data![0];
+                      final leader2 = snapshot.data![1];
+                      final leader3 = snapshot.data![2];
 
                       return Column(
                         children: [
@@ -121,7 +119,7 @@ class LeaderboardPage extends StatelessWidget {
                             physics: const NeverScrollableScrollPhysics(),
                             itemCount: snapshot.data!.length - 3,
                             itemBuilder: (context, index) {
-                              final leader = snapshot.data![index + 3] as User;
+                              final leader = snapshot.data![index + 3];
                               return Padding(
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 20, vertical: 10),
@@ -183,7 +181,7 @@ class LeaderboardPage extends StatelessWidget {
                                           ),
                                         ],
                                       ),
-                                      SizedBox(width: 20),
+                                      const SizedBox(width: 20),
                                       Container(
                                         alignment: Alignment.centerLeft,
                                         width:
@@ -193,7 +191,7 @@ class LeaderboardPage extends StatelessWidget {
                                         child: Text(leader.name!,
                                             overflow: TextOverflow.ellipsis,
                                             maxLines: 1,
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                               color: Colors.white,
                                               fontWeight: FontWeight.w500,
                                               fontSize: 20,

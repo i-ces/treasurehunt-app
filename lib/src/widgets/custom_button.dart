@@ -27,18 +27,17 @@ class CustomButton extends StatelessWidget {
           ),
           padding: const EdgeInsets.symmetric(horizontal: 45, vertical: 13),
         ),
-        child: widget != null
-            ? widget
-            : Text(
-                text.toUpperCase(),
-                style: const TextStyle(
-                  letterSpacing: 1.2,
-                  color: Colors.white,
-                  fontFamily: 'Roboto',
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600,
-                ),
+        child: widget ??
+            Text(
+              text.toUpperCase(),
+              style: const TextStyle(
+                letterSpacing: 1.2,
+                color: Colors.white,
+                fontFamily: 'Roboto',
+                fontSize: 18,
+                fontWeight: FontWeight.w600,
               ),
+            ),
       ),
     );
   }
